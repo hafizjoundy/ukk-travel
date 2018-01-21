@@ -263,18 +263,19 @@ fieldset
 
 <body>
 
-<form id="login">
-    <h1>Log In</h1>
+<form id="sign-in-form">
+    <h1>Sign In</h1>
+        <h1>Personal Information</h1>
     <fieldset id="inputs">
-        <input id="username" type="text" placeholder="Username" autofocus required="">   
+        <input id="Firstname" type="text" placeholder="Firstname" autofocus required="">   
+        <input id="Lastname" type="text" placeholder="Lastname" autofocus required="">   
+        <input id="Emailaddress" type="text" placeholder="Emailaddress" autofocus required="">   
         <input id="password" type="password" placeholder="Password" required="">
     </fieldset>
     <fieldset id="actions">
-        <input type="submit" id="submit" value="Log in">
+        <input type="submit" id="submit" value="Sign in">
         <a href="">Forgot your password?</a><a href="sign-up.html">Register</a>
     </fieldset>
-    
-</form>
 
 
 
