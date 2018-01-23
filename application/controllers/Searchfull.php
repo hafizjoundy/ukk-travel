@@ -16,6 +16,9 @@ class searchfull extends CI_Controller {
 			$depart_date = $this->input->post('depart_date'); //get post
 			$total_passengers = $this->input->post('passengers'); //get post
 
+			$dateFormated = explode("/",$depart_date); //format date post
+			$depart_date = "$dateFormated[2]-$dateFormated[0]-$dateFormated[1]";
+
 			$data = [ //make data to array
 				'depart_date' => $depart_date,
 				'rute_from' => $rute_from,
@@ -30,11 +33,16 @@ class searchfull extends CI_Controller {
 
 			if(count($search) == 0){
 				// echo "tidak ditemukan rute nya :("; //if rute  == 0
+				$this->load->view('template/v_header');
 				$this->load->view('v_searchnotfound');
+				$this->load->view('template/v_footer');
+				
 			}
 			else{
 				$v_data['data'] = $search;
+				$this->load->view('template/v_header');
 				$this->load->view('v_searchfull', $v_data); //view if rute > 0
+				$this->load->view('template/v_footer');
 			}
 			
 		}
