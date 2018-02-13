@@ -1,6 +1,6 @@
 <div class="booking">
     <div class="booking-rute">
-        <h3>Data Penumpang</h3>
+        <h3>Data Customer</h3>
 
 
         <form action="<?php echo base_url() ?>booking/insert_customer" method="POST">

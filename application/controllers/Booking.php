@@ -38,6 +38,8 @@ class Booking extends CI_Controller {
 			];
 			$id_customer[] = $this->M_booking->insert_customer($data);
 		}
-		var_dump($id_customer);
+
+		$this->session->set_flashdata('id_customer',$id_customer); //to session
+		redirect(base_url().'seat');
 	}
 }

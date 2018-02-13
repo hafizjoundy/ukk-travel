@@ -5,7 +5,7 @@ class searchfull extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->model('m_searchfull');
+		$this->load->model('M_booking');
 	}
 
 	public function index()
@@ -35,7 +35,7 @@ class searchfull extends CI_Controller {
 
 			// $this->session->set_userdata($data_session); //make variabel session
 
-			$search = $this->m_searchfull->search_rute($data); // search 
+			$search = $this->M_booking->search_rute($data); // search 
 			if(count($search) == 0){
 				// echo "tidak ditemukan rute nya :("; //if rute  == 0
 				$this->load->view('template/v_header');

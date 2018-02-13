@@ -1,0 +1,63 @@
+/* customer */
+.customer-color{
+    width: 30px;
+    height: 30px;
+    background-color:#4fc1e9;
+    cursor:pointer;
+    border-radius:5px;
+}
+.customer-selected{
+    background-color:#3ca6cb;
+}
+
+.customer-table{
+    margin: auto;
+}
+.customer-table > tbody > tr > td > span{
+    font-weight: 550;
+}
+
+.customer-table > tbody > tr > td > input{
+    padding: 9px;
+    text-align: center;
+    width: 46px;
+    height: 30px;
+}
+.customer-table > tbody > tr > td {
+    padding: 10px;
+}
+/* seat */
+.seat{
+    width: 310px;
+    margin: auto;
+    background-color: #f2f2f2;
+    padding: 5px;
+    overflow: hidden;
+    border-radius:7px;
+}
+.seat-id{
+    height: 46px;
+    width: 46px;
+    margin:2px;
+    background-color: #bfbfbf;
+    float: left;
+    cursor: pointer;
+    border-radius:7px;
+}
+.seat-id:hover{
+    /* background-color:#cecece; */
+}
+.seat-id > p{
+    text-align: center;
+    padding-top: 12px;
+    color:white;
+}
+.seat-notavailabe{
+    background-color: #f25d52;
+    /* cursor:disabl */
+}
+.seat-selected{
+    background-color: #52f298;
+}
+
+/* seat by jondes ganteng */

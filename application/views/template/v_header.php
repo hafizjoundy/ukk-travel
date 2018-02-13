@@ -60,6 +60,7 @@
 	<link rel="stylesheet" href="<?php echo base_url() ?>_assets/css/cs-skin-border.css">
 	
 	<link rel="stylesheet" href="<?php echo base_url() ?>_assets/css/style.css">
+	<link rel="stylesheet" href="<?php echo base_url() ?>_assets/css/seat.css">
 
 
 	<!-- Modernizr JS -->
