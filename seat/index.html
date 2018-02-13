@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="customer-name">
+        <table>
+            <tr>
+                <td>
+                    <div onclick="pget(this.id)" id="p1" class="customer-color id-1"></div>
+                </td>
+                <td>
+                    <span>Hafiz Joundy</span>
+                </td>
+                <td>
+                    <input id="i1" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div onclick="pget(this.id)" id="p2" class="customer-color id-2"></div>
+                </td>
+                <td>
+                    <span>Faris Efandy</span>
+                </td>
+                <td>
+                    <input id="i2" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div onclick="pget(this.id)" id="p3" class="customer-color id-3"></div>
+                </td>
+                <td>
+                    <span>Hilmi Azzriel</span>
+                </td>
+                <td>
+                    <input id="i3" type="text">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="seat">
+        <div onclick="sget(this.id)" id="1" class="seat-id"><p>1</p></div>
+        <div onclick="sget(this.id)" id="2" class="seat-id"><p>2</p></div>
+        <div onclick="sget(this.id)" id="3" class="seat-id"><p>3</p></div>
+        <div onclick="sget(this.id)" id="4" class="seat-id"><p>4</p></div>
+        <div id="5" class="seat-id seat-notavailabe"><p>5</p></div>
+        <div onclick="sget(this.id)" id="6" class="seat-id"><p>6</p></div>
+        <div id="7" class="seat-id seat-notavailabe"><p>7</p></div>
+        <div onclick="sget(this.id)" id="8" class="seat-id"><p>8</p></div>
+        <div onclick="sget(this.id)" id="9" class="seat-id"><p>9</p></div>
+        <div onclick="sget(this.id)" id="10" class="seat-id"><p>10</p></div>
+        <div onclick="sget(this.id)" id="11" class="seat-id"><p>11</p></div>
+        <div onclick="sget(this.id)" id="12" class="seat-id"><p>12</p></div>
+        <div onclick="sget(this.id)" id="13" class="seat-id"><p>13</p></div>
+        <div onclick="sget(this.id)" id="14" class="seat-id"><p>14</p></div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script>
+
+        function pget(id){
+            seat.p = id;
+            $('.customer-color').removeClass("customer-selected");
+            $('#'+id).addClass("customer-selected");
+        }
+        function sget(id){
+            seat.selectSeat(id);
+        }
+
+        var seat = {
+            p:'',
+            pn:function(id){
+                pn = id.replace('p', '');
+                return pn;
+            },
+            selectSeat: function(id) {
+                if ($('#' + id).attr('class') == 'seat-id') {
+
+                    if($('#i'+this.pn(this.p)).val() == ''){
+                        $('#' + id).addClass("seat-selected");
+                         // console.log(this.pn(this.p));
+                        $('#i'+this.pn(this.p)).val(id);
+                        $('#'+id).addClass('seat-for-'+this.p);
+                    }
+
+                  
+                } else {
+                    cSeat = $('#' + id).attr('class');
+                    cSeatoc = cSeat.replace('seat-id seat-selected seat-for-p','');
+                    $('#' + id).removeClass("seat-selected");
+                    $('#'+id).removeClass(cSeat.replace('seat-id ',''));
+                    $('#i'+cSeatoc).val(''); 
+                    
+                    
+                }
+                //    console.log($('#'+id).attr('class'));
+            }
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
