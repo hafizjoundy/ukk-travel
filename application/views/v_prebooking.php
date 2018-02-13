@@ -61,6 +61,10 @@
     </div>
 
     <div class="booking-continue">
-        <button onclick='window.location.href="<?php echo base_url() ?>booking"' class="choose-btn">Lanjut Booking</button>
+    <form action="<?php echo base_url() ?>booking" method="GET">
+        <input name="rute" value="<?php echo $_GET['rute_id'] ?>" type="hidden">
+        <input name="passengers" value="<?php echo $_GET['passengers'] ?>" type="hidden">
+        <button class="choose-btn">Lanjut Booking</button>
+    </form>
     </div>
 </div>

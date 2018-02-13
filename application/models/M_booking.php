@@ -8,4 +8,9 @@ Class M_booking extends CI_Model{
         $this->db->where('rute.id ='.$id);
         return $this->db->get()->result_array();
     }
+
+    public function insert_customer($data){
+        $this->db->insert('customer',$data);
+        return $this->db->insert_id();
+    }
 }
