@@ -13,7 +13,7 @@
         <label for="">Address</label>
         <textarea name="address[]" id="" cols="30" rows="10"></textarea><br>
         <label for="">Nomor</label>
-        <input type="text" name="nomor[]"><br>
+        <input type="text" name="phone[]"><br>
         <label for="">Email</label>
         <input type="text" name="email[]"><br>
         <label for="">Gender</label>

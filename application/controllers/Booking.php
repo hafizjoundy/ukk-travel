@@ -26,64 +26,94 @@ class Booking extends CI_Controller
 		$key = $this->input->post('key');
 		$name = $this->input->post('name');
 		$address = $this->input->post('address');
-		$nomor = $this->input->post('nomor');
+		$phone = $this->input->post('phone');
 		$email = $this->input->post('email');
 		$gender = $this->input->post('gender');
 
-		$form_len = count($name);
-
-		for ($i = 0; $i < $form_len; $i++) {
-			$data = [
-				'id' => '',
-				'name' => $name[$i],
-				'address' => $name[$i],
-				'phone' => $nomor[$i],
-				'email' => $email[$i],
-				'gender' => $gender[$i]
-			];
-			$id_customer[] = $this->M_booking->insert_customer($data);
-		}
+		$form_customer = [
+			'name' => $name,
+			'address' => $address,
+			'phone' => $phone,
+			'email' => $email,
+			'gender' => $gender
+		];
 
 		$value = $this->session->userdata($key);
 
-		$value['id_customer'] = $id_customer; //add id_customer to session :3
-		$this->session->set_userdata($key,$value);		
+		$value['form_customer'] = $form_customer; //add customer_id to session :3
+		$this->session->set_userdata($key, $value);
 
-		redirect(base_url() . 'booking/seat/?key='.$key);
+		redirect(base_url() . 'booking/seat/?key=' . $key);
 	}
 
 	public function seat()
 	{
-		$data_customer = $this->session->userdata($_GET['key']);
-		$id_customer = $data_customer['id_customer'];
+		$customer_data = $this->session->userdata($_GET['key']);
+		// $customer_id = $customer_data['customer_id'];
 
-		foreach ($id_customer as $value) {
-			$customer[] = $this->M_booking->get_customer($value)[0]['name'];
-		}
+		// foreach ($customer_id as $value) {
+		// 	$customer[] = $this->M_booking->get_customer($value)[0]['name'];
+		// }
 
-		$data['data'] = $customer;
+		$data['data'] = $customer_data['form_customer']['name'];
 
 		$this->load->view('template/v_header');
 		$this->load->view('V_seat', $data);
 		$this->load->view('template/v_footer');
 	}
 
-	public function proccess(){
+	public function proccess()
+	{
+
 		$key = $this->input->post('key');
 		$customer_seat = $this->input->post('seat');
+		$customer_data = $this->session->userdata($key);
 
-		$data_customer = $this->session->userdata($key);
-		
-		var_dump($data_customer);
-		die;
+		//insert resertvation
+		$reservation_code = 1;
+		$user_id = 8;
+		$rute_id = $customer_data['rute_id'];
 
-		$id_customer = $data_customer['id_customer'];
+		$data_reservation = [
+			'id' => '', //auto increment id
+			'reservation_code' => $reservation_code,
+			'reservation_date' => '', //curent time
+			'user_id' => $user_id,
+			'rute_id' => $rute_id,
+			'status' => '' //default status = 0
+		];
+
+		$reservation_id = $this->M_booking->insert_reservation($data_reservation); //get last id from reservation
+		//end insert reservation
+
+		//insert customer
+		$customer_form = $customer_data['form_customer'];
+		for ($i = 0; $i < count($customer_form['name']); $i++) {
+			$data_customer_form = [
+				'id' => '',
+				'name' => $customer_form['name'][$i],
+				'address' => $customer_form['address'][$i],
+				'phone' => $customer_form['phone'][$i],
+				'email' => $customer_form['email'][$i],
+				'gender' => $customer_form['gender'][$i]
+			];
+			$customer_id[] = $this->M_booking->insert_customer($data_customer_form); //get last id from customer
+		}
+		//end insert customer
 		
-		if(count($id_customer) == count($customer_seat)){
-			for ($i=0; $i < count($id_customer); $i++) { 
-				$passengers[] = [$id_customer[$i],$customer_seat[$i]];
+		//insert passengers
+		if (count($customer_id) == count($customer_seat)) {
+			for ($i = 0; $i < count($customer_id); $i++) {
+				$data_passengers = [
+					'id' => '', //auto increment
+					'customer_id' => $customer_id[$i],
+					'reservation_id' => $reservation_id,
+					'seat' => $customer_seat[$i]
+				];
+				$this->M_booking->insert_passengers($data_passengers);
 			}
 		}
-		var_dump($passengers);
+		//end insert passengers
+
 	}
 }

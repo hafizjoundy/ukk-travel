@@ -26,4 +26,13 @@ Class M_booking extends CI_Model{
         $query = $this->db->get('customer'); //get db
         return $query->result_array(); //return as array
     }
+
+    public function insert_reservation($data){
+        $this->db->insert('reservation',$data);
+        return $this->db->insert_id();
+    }
+
+    public function insert_passengers($data){
+        return $this->db->insert('passengers',$data);
+    }
 }
