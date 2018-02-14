@@ -32,4 +32,22 @@ class Prebooking extends CI_Controller {
 		}
 
 	}
+
+	public function makebooking(){
+		$passengers = $this->input->post('passengers');
+		$rute_id = $this->input->post('rute_id');
+
+		// var_dump($this->input->post());
+		// die;
+
+		$session_name = 'JON-'.md5(rand(1,9999));
+		$value = [
+			'passengers' => $passengers,
+			'rute_id' => $rute_id
+		];
+
+		$this->session->set_userdata($session_name,$value);
+
+		redirect(base_url().'booking/?key='.$session_name);
+	}
 }

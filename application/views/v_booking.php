@@ -4,8 +4,8 @@
 
 
         <form action="<?php echo base_url() ?>booking/insert_customer" method="POST">
-
-    <?php for($i = 1;$i <= $_GET['passengers']; $i++) : ?>
+        <input name="key" value="<?php echo $_GET['key'] ?>" type="hidden">
+    <?php for ($i = 1; $i <= $data['passengers']; $i++) : ?>
         
         <h4>Penumpang <?php echo $i ?></h4>
         <label for="">Nama</label>

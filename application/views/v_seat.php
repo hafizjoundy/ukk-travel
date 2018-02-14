@@ -3,7 +3,8 @@
     <h3>Pilih Kursi</h3>
     <div class="customer-name">
 
-    <form action="">
+    <form action="<?php echo base_url() ?>booking/proccess" method="POST">
+        <input type="hidden" name='key' value='<?php echo $_GET['key'] ?>'>
         <table class="customer-table">
         
             <?php $i=0; ?>
@@ -18,7 +19,7 @@
                     <span><?php echo $value ?></span>
                 </td>
                 <td>
-                    <input disabled class="form-control" id="i<?php echo $i ?>" type="text">
+                    <input name="seat[]" class="form-control" id="i<?php echo $i ?>" type="text">
                 </td>
             </tr>
 

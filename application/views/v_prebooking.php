@@ -61,8 +61,8 @@
     </div>
 
     <div class="booking-continue">
-    <form action="<?php echo base_url() ?>booking" method="GET">
-        <input name="rute" value="<?php echo $_GET['rute_id'] ?>" type="hidden">
+    <form action="<?php echo base_url() ?>prebooking/makebooking" method="POST">
+        <input name="rute_id" value="<?php echo $_GET['rute_id'] ?>" type="hidden">
         <input name="passengers" value="<?php echo $_GET['passengers'] ?>" type="hidden">
         <button class="choose-btn">Lanjut Booking</button>
     </form>
