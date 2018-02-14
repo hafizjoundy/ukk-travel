@@ -49,12 +49,7 @@ class Booking extends CI_Controller
 	public function seat()
 	{
 		$customer_data = $this->session->userdata($_GET['key']);
-		// $customer_id = $customer_data['customer_id'];
-
-		// foreach ($customer_id as $value) {
-		// 	$customer[] = $this->M_booking->get_customer($value)[0]['name'];
-		// }
-
+		
 		$data['data'] = $customer_data['form_customer']['name'];
 
 		$this->load->view('template/v_header');
@@ -70,17 +65,22 @@ class Booking extends CI_Controller
 		$customer_data = $this->session->userdata($key);
 
 		//insert resertvation
-		$reservation_code = 1;
+
+		$code = 'JO'.rand(11111,99999); //generate reservation code
+		$reservation_code = $code;
+
+		while (count($this->M_booking->check_code_reservation($code)) != 0) { //check code mbok ana nng db :3
+			$code = 'JO'.rand(11111,99999);
+			$reservation_code = $code;
+		}
+
 		$user_id = 8;
 		$rute_id = $customer_data['rute_id'];
 
 		$data_reservation = [
-			'id' => '', //auto increment id
 			'reservation_code' => $reservation_code,
-			'reservation_date' => '', //curent time
 			'user_id' => $user_id,
 			'rute_id' => $rute_id,
-			'status' => '' //default status = 0
 		];
 
 		$reservation_id = $this->M_booking->insert_reservation($data_reservation); //get last id from reservation
@@ -90,7 +90,6 @@ class Booking extends CI_Controller
 		$customer_form = $customer_data['form_customer'];
 		for ($i = 0; $i < count($customer_form['name']); $i++) {
 			$data_customer_form = [
-				'id' => '',
 				'name' => $customer_form['name'][$i],
 				'address' => $customer_form['address'][$i],
 				'phone' => $customer_form['phone'][$i],
@@ -105,7 +104,6 @@ class Booking extends CI_Controller
 		if (count($customer_id) == count($customer_seat)) {
 			for ($i = 0; $i < count($customer_id); $i++) {
 				$data_passengers = [
-					'id' => '', //auto increment
 					'customer_id' => $customer_id[$i],
 					'reservation_id' => $reservation_id,
 					'seat' => $customer_seat[$i]

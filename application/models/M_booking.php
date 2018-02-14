@@ -32,6 +32,12 @@ Class M_booking extends CI_Model{
         return $this->db->insert_id();
     }
 
+    public function check_code_reservation($code){
+        $this->db->where(['reservation_code' => $code]); 
+        $query = $this->db->get('reservation');
+        return $query->result_array(); //return as array
+    }   
+
     public function insert_passengers($data){
         return $this->db->insert('passengers',$data);
     }

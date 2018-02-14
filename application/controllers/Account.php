@@ -45,7 +45,6 @@ class Account extends CI_Controller {
         $password = password_hash($password, PASSWORD_DEFAULT);
 
         $data = [
-            "id" => "",
             "username" => $username,
             "password" => $password,
             "level" => 1
