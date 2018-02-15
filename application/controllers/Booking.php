@@ -50,7 +50,13 @@ class Booking extends CI_Controller
 	{
 		$customer_data = $this->session->userdata($_GET['key']);
 		
+		
+		$rute = $this->M_booking->get_rute($customer_data['rute_id'])[0];
+
+		$transportation_seat = $rute['seat_qty'];
+		
 		$data['data'] = $customer_data['form_customer']['name'];
+		$data['transportation_seat'] = $transportation_seat;
 
 		$this->load->view('template/v_header');
 		$this->load->view('V_seat', $data);

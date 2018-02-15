@@ -15,6 +15,13 @@ Class M_booking extends CI_Model{
         return $this->db->get()->result_array();
     }
 
+    public function get_seat_booked(){
+        $this->db->select('passengers.seat');
+        $this->db->from('reservation');
+        // SELECT reservation.id FROM `passengers.seat` JOIN rute on reservation.rute_id = rute.id JOIN passengers on reservation.id = passengers.reservation_id where rute.id = 2;
+
+    }
+
     public function insert_customer($data){
         $this->db->insert('customer',$data);
         return $this->db->insert_id();
