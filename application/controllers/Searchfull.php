@@ -24,6 +24,7 @@ class searchfull extends CI_Controller {
 				'date(depart)' => $depart_date,
 				'rute_from' => $rute_from,
 				'rute_to' => $rute_to,
+				'class' => $flight_class
 			];
 
 			$data_session = [ //data session
@@ -36,6 +37,9 @@ class searchfull extends CI_Controller {
 			// $this->session->set_userdata($data_session); //make variabel session
 
 			$search = $this->M_booking->search_rute($data); // search 
+
+			// var_dump($search);
+			// die;
 			if(count($search) == 0){
 				// echo "tidak ditemukan rute nya :("; //if rute  == 0
 				$this->load->view('template/v_header');

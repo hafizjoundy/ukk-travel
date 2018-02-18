@@ -1978,56 +1978,128 @@ div.cs-select span {
 }
 
 /*# sourceMappingURL=style.css.map */
-
+/* ###################
+###################
+################### */
 /* custom */
+
+.flight-wrapper{
+  background-color: #f7f7f7;
+  padding: 50px 150px;
+  overflow: hidden;
+}
+
+.search-flight-title{
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom:25px;
+}
+
+.search-flight-title > h4{
+  margin-bottom:12px;
+}
+
+.search-flight-title > p{
+  margin-bottom:5px;
+  font-size: 13px;
+}
 
 .search-flight{
-  background-color: rgb(255, 255, 255);
-  margin: 0px 70px 70px 70px;
-  padding: 10px;
-  /* border:1px solid rgb(218, 218, 218); */
+  background-color:white;
+  padding: 15px;
+  border-radius:5px;  
 }
 
-/* custom */
-.search-flight-title{
-  background-color: rgb(255, 255, 255);
-  margin: 70px 70px 10px 70px;
-  padding: 10px 10px 0px 10px;
-}
-.search-flight-title h3{
-  margin: 0 0 7px 0;
-}
-.search-flight-title p {
-  font-size:15px;
-}
-.line-horisontal{
- margin:10px;
-}
+
 .search-header{
-  text-align:center;
-  border:1px solid rgb(218, 218, 218);
+  /* text-align:center; */
+  border: 2px solid rgb(246, 246, 246);
   padding:15px;
+  border-radius: 5px;
+ 
 }
 .search-header div h6{
-  line-height: 0px;
+  font-weight:600;
+  margin-top: -5px;
 }
-.flight-rute{
-  text-align: center;
-  border: 1px solid rgb(218, 218, 218);
-  padding: 55px 0px 89px 0px;
-  margin-top: 15px;
+.form-flight{
+  margin: 14px;
 }
-.flight-rute div p{
-  color:#5a5a5a;
-  margin-bottom:35px;
-  line-height: 0px;
-}
-.line{
-  height:1px;
-  width: 80%;
-  background-color: rgb(235, 235, 235);
+.form-flight > div > p{
+  margin-bottom: 0px;
 }
 
+.flight-rute-date{
+  font-size: 12px;
+  margin-bottom: 15px !important;
+}
+
+.flight-rute{
+  /* text-align: center; */
+  border: 2px solid rgb(246, 246, 246);
+  margin: 1px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+.flight-rute:hover{
+  border: 2px solid #4fc1e9;
+}
+
+.flight-price{
+  color: #FB8B34;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px !important;
+}
+
+.flight-booking-info{
+  margin-bottom:15px;
+}
+
+.flight-booking-1,.flight-booking-2,.customer-data{
+  background-color:white;
+  border-radius:5px;
+  padding: 10px;
+  margin-bottom:15px;
+}
+.booking-title > h4{
+  margin: 0px;
+  margin-bottom: 15px;
+  margin-top: 5px;
+}
+.booking-line{
+  height: 2px;
+  width: 99px;
+  border-radius: 5px;
+  background-color: #efefef;
+  margin: auto;
+  width: 100%;
+}
+
+.booking-title{
+  text-align: left;
+  margin-bottom:15px;
+}
+
+.summary-table,.flight-table{
+  width:100%;
+}
+
+.price-you-pay{
+  font-weight: bold;
+  color:#FB8B34;
+}
+.btn-continue{
+  margin:50px auto 15px auto;
+  width:160px;
+
+}
+.customer-data{
+margin-bottom:25px;
+}
+
+/* signin */
 .form-signin{
   padding-left: 370px;
   padding-right: 370px;
@@ -2038,7 +2110,7 @@ div.cs-select span {
   background-color: #FB8B34;
   color:white;
   padding: 7px;
-  width: 95px;
+  width: 160px;
   border-radius: 5px;
   cursor: pointer;
 }

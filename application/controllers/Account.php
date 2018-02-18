@@ -19,6 +19,7 @@ class Account extends CI_Controller {
         $this->load->view('template/v_footer');
     }
 
+
     public function signin_process(){
         $username = $this->input->post('username');
         $password = $this->input->post('password');

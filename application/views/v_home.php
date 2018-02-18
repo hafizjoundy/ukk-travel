@@ -20,14 +20,28 @@
 										<div class="row">
 											<div class="col-xxs-12 col-xs-6 mt">
 												<div class="input-field">
-													<label for="from">From:</label>
-													<input name="rute_from" type="text" class="form-control" id="from-place" />
+												<section>
+													<label for="class">From:</label>
+													<select name="rute_from" class="cs-select cs-skin-border">
+														<option value="">Select</option>
+														<?php foreach ($rute_all as $value) : ?>
+															<option value="<?php echo $value['rute_from'] ?>"><?php echo $value['rute_from'] ?></option>
+														<?php endforeach; ?>
+													</select>
+												</section>
 												</div>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt">
 												<div class="input-field">
-													<label for="from">To:</label>
-													<input name="rute_to" type="text" class="form-control" id="to-place" />
+												<section>
+													<label for="class">To:</label>
+													<select name="rute_to" class="cs-select cs-skin-border">
+													<option value="">Select</option>
+														<?php foreach ($rute_all as $value) : ?>
+															<option value="<?php echo $value['rute_to'] ?>"><?php echo $value['rute_to'] ?></option>
+														<?php endforeach; ?>
+													</select>
+												</section>
 												</div>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt alternate">

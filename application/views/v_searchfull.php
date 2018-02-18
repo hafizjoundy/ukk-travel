@@ -1,18 +1,36 @@
-<div class="search-flight-wrapper">
+<div class="flight-wrapper">
+
 <div class="search-flight-title">
     <!-- get data from get -->
-    <h3><?php echo $_GET['rute_from'] ?> → <?php echo $_GET['rute_to'] ?></h3>
+    <h4>
+        <span class="glyphicon glyphicon-plane"></span>
+        Trip from 
+        <b><?php echo $_GET['rute_from'] ?></b> to 
+        <b><?php echo $_GET['rute_to'] ?></b>
+    </h4>
+
+   
+    <p> 
+        <b>
+        <?php
+        // convert date to month day using date function php
+        $date = strtotime($_GET['depart_date']);
+        echo date("D d M Y", $date);
+        ?>
+        </b>
+    </p>
+    
     <p>
+        <b>
+        <span><?php echo $_GET['passengers'] ?> Passengers, </span> 
+        <span><?php echo $_GET['flight_class'] ?> Class</span>
+        </b>
+    </p>
 
-    <!-- convert date to month day using date function php -->
-    <?php
-     $date = strtotime($_GET['depart_date']);
-     echo date("D d M Y",$date);
-     ?>
-
-    <span class="line-horisontal">|</span> <?php echo $_GET['passengers'] ?> Passengers <span class="line-horisontal">|</span> <?php echo $_GET['flight_class'] ?>
 </div>
-<div class="container search-flight">
+
+
+<div class="search-flight">
     <div class="search-header">
         <div class="col-lg-3">
         <h6>Airline</h6>
@@ -32,21 +50,49 @@
     </div>
 
 <!-- foreach variabel data as value -->
+<?php var_dump($data) ?>
  <?php foreach ($data as $value) : ?>
 
-    <div class="flight-rute">
-    <form action="<?php echo base_url() ?>prebooking/" method="GET">
+    <div class="flight-rute row">
+    <form class="row form-flight" action="<?php echo base_url() ?>prebooking/" method="GET">
         <input type="hidden" name="passengers" value="<?php echo $_GET['passengers'] ?>">
+        <input type="hidden" name="rute_from" value="<?php echo $_GET['rute_from'] ?>">
+        <input type="hidden" name="rute_to" value="<?php echo $_GET['rute_to'] ?>">
+        <input type="hidden" name="depart_date" value="<?php
+        // convert date to month day using date function php
+        $date = strtotime($_GET['depart_date']);
+        echo date("D d M Y", $date);
+        ?>">
+        <input type="hidden" name="flight_class" value="<?php echo $_GET['flight_class'] ?>">        
         <input type="hidden" name="rute_id" value="<?php echo $value['id']; ?>">
         <div class="col-lg-3">
-            <p>Lion</p>
+            <p><?php echo $value['code']; ?></p>
+            <p><?php echo $value['class']; ?> Class</p>
         </div>
         <div class="col-lg-2">
-            <p><?php echo $value['depart']; ?></p>
+            <p>
+                <?php 
+                echo date('G:i:s', strtotime($value['depart']));
+                ?>
+            </p>
+            <p class="flight-rute-date">
+                <?php 
+                echo date('D d M Y', strtotime($value['depart']));
+                ?>
+            </p>
             <p><?php echo $value['rute_from']; ?></p>
         </div>
         <div class="col-lg-2">
-            <p><?php echo $value['arrive']; ?></p>
+        <p>
+                <?php 
+                echo date('G:i:s', strtotime($value['arrive']));
+                ?>
+            </p>
+            <p class="flight-rute-date">
+                <?php 
+                echo date('D d M Y', strtotime($value['arrive']));
+                ?>
+            </p>
             <p><?php echo $value['rute_to']; ?></p>
         </div>
         <div class="col-lg-2">
@@ -64,17 +110,17 @@
             </p>
         </div>
         <div class="col-lg-3">
-            <p>
+            <p class="flight-price">
             
             <!-- convert number to idr format -->
             <?php 
-            echo "Rp.".strrev(implode('.',str_split(strrev(strval($value['price'])),3)));
+            echo "Rp." . strrev(implode('.', str_split(strrev(strval($value['price'])), 3)));
             ?>
             
             </p>
-            <button onclick="window.location.href='<?php echo base_url() ?>prebooking/flight/<?php echo $value['id']; ?>'" class="choose-btn">Choose</button>
+            <button class="choose-btn">Choose</button>
         </div>
-        </form>
+    </form>
     </div>
 
     <!-- end foreach -->

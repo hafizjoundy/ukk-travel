@@ -15,6 +15,7 @@ class Booking extends CI_Controller
 
 		$session_key = $this->input->get('key');
 		$data['data'] = $this->session->userdata($session_key);
+		$data['data_rute'] = $this->M_booking->get_rute($this->session->userdata($session_key)['rute_id'])[0];
 
 		$this->load->view('template/v_header');
 		$this->load->view('v_booking', $data);
@@ -49,14 +50,33 @@ class Booking extends CI_Controller
 	public function seat()
 	{
 		$customer_data = $this->session->userdata($_GET['key']);
-		
-		
+
+		var_dump($customer_data);
+		// die;
+	
+
 		$rute = $this->M_booking->get_rute($customer_data['rute_id'])[0];
 
 		$transportation_seat = $rute['seat_qty'];
 		
-		$data['data'] = $customer_data['form_customer']['name'];
+		$seat_booked = $this->M_booking->get_seat_booked($customer_data['rute_id']);
+
+		$seat_bookeds = [];
+		for ($i=0; $i < count($seat_booked); $i++) { 
+			$seat_bookeds[] = $seat_booked[$i]['seat'];
+		}
+
+		$seat_total = $this->M_booking->get_seat_total($customer_data['rute_id'])[0]['seat_qty'];
+
+		$data['seat'] = [
+			'seat_bookeds' => $seat_bookeds,
+			'seat_total' => $seat_total
+		];
+
+		$data['data_form'] = $customer_data['form_customer']['name'];
+		$data['data'] = $customer_data;
 		$data['transportation_seat'] = $transportation_seat;
+		$data['data_rute'] = $this->M_booking->get_rute($customer_data['rute_id'])[0];
 
 		$this->load->view('template/v_header');
 		$this->load->view('V_seat', $data);
@@ -70,7 +90,6 @@ class Booking extends CI_Controller
 		$customer_seat = $this->input->post('seat');
 		$customer_data = $this->session->userdata($key);
 
-		//insert resertvation
 
 		$code = 'JO'.rand(11111,99999); //generate reservation code
 		$reservation_code = $code;
