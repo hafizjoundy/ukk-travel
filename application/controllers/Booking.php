@@ -152,7 +152,8 @@ class Booking extends CI_Controller
 		//end insert passengers
 
 		$customer_data['reservation_code'] = $reservation_code;
-		$this->session->set_userdata($session_key,$customer_data);
-		redirect(base_url().'success/?key='.$session_key.'&reservation_code='.$reservation_code);
+		// $this->session->set_userdata($session_key,$customer_data);
+		$this->session->unset_userdata($session_key);
+		redirect(base_url().'reservation/status/?reservation_code='.$reservation_code);
 	}
 }

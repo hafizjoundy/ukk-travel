@@ -2148,3 +2148,32 @@ margin-bottom:25px;
 .stuck{
   position: unset !important;
 }
+
+.status-paid{
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #48ed9c;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+}
+.status-unpaid{
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #ff4848;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+}
+.table-customer > tbody > tr > td{
+  padding:5px !important;
+}
+.table-customer > tbody > tr > .h{
+  color:#b1b1b1;
+}
+.table-customer > tbody > tr > .c{
+  font-weight: 600;
+}
+.table-customer > tbody > .s{
+  background-color: #f7f7f7;
+}
