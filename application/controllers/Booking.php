@@ -14,8 +14,16 @@ class Booking extends CI_Controller
 	{
 
 		$session_key = $this->input->get('key');
-		$data['data'] = $this->session->userdata($session_key);
-		$data['data_rute'] = $this->M_Booking->get_rute($this->session->userdata($session_key)['rute_id'])[0];
+
+		if($this->session->userdata($session_key) !== null){ //check session
+			$data['data'] = $this->session->userdata($session_key);
+		}
+		else{
+			redirect(base_url());
+		}
+
+		$rute_id = $this->session->userdata($session_key)['rute_id'];
+		$data['data_rute'] = $this->M_Booking->get_rute($rute_id)[0];
 
 		$this->load->view('template/V_Header');
 		$this->load->view('v_booking', $data);
@@ -39,9 +47,9 @@ class Booking extends CI_Controller
 			'gender' => $gender
 		];
 
-		$value = $this->session->userdata($key);
+		$value = $this->session->userdata($key); //get from session
 
-		$value['form_customer'] = $form_customer; //add customer_id to session :3
+		$value['form_customer'] = $form_customer; // add form_customer to session
 		$this->session->set_userdata($key, $value);
 
 		redirect(base_url() . 'booking/seat/?key=' . $key);
@@ -49,19 +57,26 @@ class Booking extends CI_Controller
 
 	public function seat()
 	{
-		$customer_data = $this->session->userdata($_GET['key']);
+		$session_key = $_GET['key'];
 
-		var_dump($customer_data);
-		// die;
-	
+		if($this->session->userdata($session_key) !== null){ //check session
+			$data['data'] = $this->session->userdata($session_key);
+		}
+		else{
+			redirect(base_url());
+		}
 
-		$rute = $this->M_Booking->get_rute($customer_data['rute_id'])[0];
+		$customer_data = $this->session->userdata($session_key);
 
+		$rute_id = $customer_data['rute_id'];
+
+		$rute = $this->M_Booking->get_rute($rute_id)[0];
 		$transportation_seat = $rute['seat_qty'];
 		
-		$seat_booked = $this->M_Booking->get_seat_booked($customer_data['rute_id']);
+		$seat_booked = $this->M_Booking->get_seat_booked($rute_id);
 
 		$seat_bookeds = [];
+		
 		for ($i=0; $i < count($seat_booked); $i++) { 
 			$seat_bookeds[] = $seat_booked[$i]['seat'];
 		}
@@ -85,11 +100,11 @@ class Booking extends CI_Controller
 
 	public function proccess()
 	{
+		$user_id = 8;
 
-		$key = $this->input->post('key');
+		$session_key = $this->input->post('key');
 		$customer_seat = $this->input->post('seat');
-		$customer_data = $this->session->userdata($key);
-
+		$customer_data = $this->session->userdata($session_key);
 
 		$code = 'JO'.rand(11111,99999); //generate reservation code
 		$reservation_code = $code;
@@ -98,8 +113,6 @@ class Booking extends CI_Controller
 			$code = 'JO'.rand(11111,99999);
 			$reservation_code = $code;
 		}
-
-		$user_id = 8;
 		$rute_id = $customer_data['rute_id'];
 
 		$data_reservation = [
@@ -139,7 +152,7 @@ class Booking extends CI_Controller
 		//end insert passengers
 
 		$customer_data['reservation_code'] = $reservation_code;
-		$this->session->set_userdata($key,$customer_data);
-		redirect(base_url().'success/?key='.$key.'&reservation_code='.$reservation_code);
+		$this->session->set_userdata($session_key,$customer_data);
+		redirect(base_url().'success/?key='.$session_key.'&reservation_code='.$reservation_code);
 	}
 }

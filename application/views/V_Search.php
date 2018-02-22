@@ -50,7 +50,6 @@
     </div>
 
 <!-- foreach variabel data as value -->
-<?php var_dump($data) ?>
  <?php foreach ($data as $value) : ?>
 
     <div class="flight-rute row">
@@ -59,6 +58,7 @@
         <input type="hidden" name="rute_from" value="<?php echo $_GET['rute_from'] ?>">
         <input type="hidden" name="rute_to" value="<?php echo $_GET['rute_to'] ?>">
         <input type="hidden" name="depart_date" value="<?php
+        
         // convert date to month day using date function php
         $date = strtotime($_GET['depart_date']);
         echo date("D d M Y", $date);

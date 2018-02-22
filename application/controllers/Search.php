@@ -11,41 +11,30 @@ class Search extends CI_Controller {
 	public function index()
 	{
 		if($this->input->get('rute_from')){
-			$rute_from = $this->input->get('rute_from'); //get from get method
-			$rute_to = $this->input->get('rute_to'); //get from get method
-			$depart_date = $this->input->get('depart_date'); //get from get method
-			$passengers = $this->input->get('passengers'); //get from get method
-			$flight_class = $this->input->get('flight_class'); //get from get method
+			$rute_from = $this->input->get('rute_from'); 
+			$rute_to = $this->input->get('rute_to'); 
+			$depart_date = $this->input->get('depart_date'); 
+			$passengers = $this->input->get('passengers'); 
+			$flight_class = $this->input->get('flight_class'); 
 
-			$dateFormated = explode("/",$depart_date); //format date from get
+			//format output date from template :)
+			$dateFormated = explode("/",$depart_date);
 			$depart_date = "$dateFormated[2]-$dateFormated[0]-$dateFormated[1]";
 
-			$data = [ //make data to array
-				'date(depart)' => $depart_date,
+			//make variable arrau to insert database
+			$data = [ 
+				'date(depart)' => $depart_date, 
 				'rute_from' => $rute_from,
 				'rute_to' => $rute_to,
 				'class' => $flight_class
 			];
 
-			$data_session = [ //data session
-				'flight' => [ //flight session
-					'passengers' => $passengers
-					// 'class' => $flight_class
-				]
-			];
+			$search = $this->M_Booking->search_rute($data); 
 
-			// $this->session->set_userdata($data_session); //make variabel session
-
-			$search = $this->M_Booking->search_rute($data); // search 
-
-			// var_dump($search);
-			// die;
-			if(count($search) == 0){
-				// echo "tidak ditemukan rute nya :("; //if rute  == 0
+			if(count($search) == 0){ //chect if search not exist..
 				$this->load->view('template/V_Header');
 				$this->load->view('V_Search_not_found');
 				$this->load->view('template/V_Footer');
-				
 			}
 
 			else{
@@ -53,13 +42,13 @@ class Search extends CI_Controller {
 					'data' => $search
 				];
 				$this->load->view('template/V_Header');
-				$this->load->view('V_Search', $v_data); //view if rute > 0
+				$this->load->view('V_Search', $v_data);
 				$this->load->view('template/V_Footer');
 			}
 			
 		}
 		else{
-			echo 'belum search'; //if get = nulll
+			redirect(base_url());
 		}
 	}
 }

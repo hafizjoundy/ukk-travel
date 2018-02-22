@@ -8,12 +8,12 @@ class Prebooking extends CI_Controller {
 	}
 	public function index()
 	{
-		$rute_id = $this->input->get('rute_id'); //get rute from method get
-		$passengers = $this->input->get('passengers'); //get passengers from method get
-		$data_rute = $this->M_Booking->get_rute($rute_id); //get data_rute from id
+		$rute_id = $this->input->get('rute_id');
+		$passengers = $this->input->get('passengers');
+		$data_rute = $this->M_Booking->get_rute($rute_id);
 
-		if($data_rute > 0){ //check if rute exsist
-			$data_rute_price = $data_rute[0]['price']; //get price from vb data_rute
+		if(count($data_rute) > 0){ //check if rute exsist
+			$data_rute_price = $data_rute[0]['price'];
 			$total_payment = $data_rute_price * $passengers;
 
 			// var_dump($data_rute);
@@ -28,7 +28,7 @@ class Prebooking extends CI_Controller {
 			$this->load->view('template/V_Footer');
 		}
 		else{
-			echo "rute tidak ada";
+			redirect(base_url());
 		}
 
 	}
@@ -37,12 +37,10 @@ class Prebooking extends CI_Controller {
 		$passengers = $this->input->post('passengers');
 		$rute_id = $this->input->post('rute_id');
 
-		// var_dump($this->input->post());
-		// die;
-
-		$session_name = 'JON-'.md5(rand(1,9999));
-		$value = [
-			'passengers' => $passengers,
+		$session_name = 'JON-'.md5(rand(1,9999)); //make rand session name
+		
+		$value = [ //insert some variable into session
+			'passengers' => $passengers, 
 			'rute_id' => $rute_id
 		];
 

@@ -1,6 +1,6 @@
 <?php
 
-Class M_booking extends CI_Model{
+Class M_Booking extends CI_Model{
 
     public function get_all_rute(){
         $this->db->select('rute_from,rute_to');

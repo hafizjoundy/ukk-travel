@@ -10,5 +10,9 @@ class Success extends CI_Controller {
 
 		$reservation_code = $_GET['reservation_code'];
 		echo $reservation_code;
+		
+		$this->load->view('template/V_Header');
+		$this->load->view('V_Success',$data);
+		$this->load->view('template/V_Footer');
 	}
 }

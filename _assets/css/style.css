@@ -2145,3 +2145,6 @@ margin-bottom:25px;
   text-align:center;
   padding:100px;
 }
+.stuck{
+  position: unset !important;
+}

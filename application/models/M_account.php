@@ -1,6 +1,6 @@
 <?php
 
-Class M_account extends CI_Model{
+Class M_Account extends CI_Model{
     public function signup_insert($data){
         return $this->db->insert('user', $data);
     }

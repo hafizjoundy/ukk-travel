@@ -13,10 +13,19 @@ class Home extends CI_Controller {
 	{	
 		
 		$rute_all = $this->M_Booking->get_all_rute();
-		$data['rute_all'] = $rute_all;
+
+		if (count($rute_all) == 0) {
+			$data['rute_all'][0] =[
+				'rute_to' => 'not_available',
+				'rute_from' => 'not_available'
+			];
+		}
+		else{
+			$data['rute_all'] = $rute_all;
+		}
 
 		$this->load->view('template/V_Header');
-		$this->load->view('v_home',$data);
+		$this->load->view('V_Home',$data);
 		$this->load->view('template/V_Footer');
 	}
 }
