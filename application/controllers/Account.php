@@ -4,19 +4,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Account extends CI_Controller {
     public function __construct(){
 		parent::__construct();
-		$this->load->model('M_account');
+		$this->load->model('M_Account');
     }
     
 	public function index()
 	{
-		$this->load->view('v_home');
+		$this->load->view('V_Home');
     }
     
     public function signin()
     {
-        $this->load->view('template/v_header');
+        $this->load->view('template/V_Header');
         $this->load->view('v_signin');
-        $this->load->view('template/v_footer');
+        $this->load->view('template/V_Footer');
     }
 
 
@@ -24,7 +24,7 @@ class Account extends CI_Controller {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
-        $password_get = $this->M_account->get_password_users($username);
+        $password_get = $this->M_Account->get_password_users($username);
         $password_get = $password_get[0]["password"];
 
         var_dump(password_verify($password, $password_get));
@@ -34,9 +34,9 @@ class Account extends CI_Controller {
 
     public function signup()
     {
-        $this->load->view('template/v_header');
+        $this->load->view('template/V_Header');
         $this->load->view('v_signup');
-        $this->load->view('template/v_footer');
+        $this->load->view('template/V_Footer');
     }
 
     public function signup_process(){
@@ -51,7 +51,7 @@ class Account extends CI_Controller {
             "level" => 1
         ];
 
-        if($this->M_account->signup_insert($data) == true){
+        if($this->M_Account->signup_insert($data) == true){
             echo "pendaftaran sukses";
         }
         else{

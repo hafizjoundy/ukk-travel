@@ -7,7 +7,7 @@ class Booking extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('M_booking');
+		$this->load->model('M_Booking');
 	}
 
 	public function index()
@@ -15,11 +15,11 @@ class Booking extends CI_Controller
 
 		$session_key = $this->input->get('key');
 		$data['data'] = $this->session->userdata($session_key);
-		$data['data_rute'] = $this->M_booking->get_rute($this->session->userdata($session_key)['rute_id'])[0];
+		$data['data_rute'] = $this->M_Booking->get_rute($this->session->userdata($session_key)['rute_id'])[0];
 
-		$this->load->view('template/v_header');
+		$this->load->view('template/V_Header');
 		$this->load->view('v_booking', $data);
-		$this->load->view('template/v_footer');
+		$this->load->view('template/V_Footer');
 	}
 
 	public function insert_customer()
@@ -55,18 +55,18 @@ class Booking extends CI_Controller
 		// die;
 	
 
-		$rute = $this->M_booking->get_rute($customer_data['rute_id'])[0];
+		$rute = $this->M_Booking->get_rute($customer_data['rute_id'])[0];
 
 		$transportation_seat = $rute['seat_qty'];
 		
-		$seat_booked = $this->M_booking->get_seat_booked($customer_data['rute_id']);
+		$seat_booked = $this->M_Booking->get_seat_booked($customer_data['rute_id']);
 
 		$seat_bookeds = [];
 		for ($i=0; $i < count($seat_booked); $i++) { 
 			$seat_bookeds[] = $seat_booked[$i]['seat'];
 		}
 
-		$seat_total = $this->M_booking->get_seat_total($customer_data['rute_id'])[0]['seat_qty'];
+		$seat_total = $this->M_Booking->get_seat_total($customer_data['rute_id'])[0]['seat_qty'];
 
 		$data['seat'] = [
 			'seat_bookeds' => $seat_bookeds,
@@ -76,11 +76,11 @@ class Booking extends CI_Controller
 		$data['data_form'] = $customer_data['form_customer']['name'];
 		$data['data'] = $customer_data;
 		$data['transportation_seat'] = $transportation_seat;
-		$data['data_rute'] = $this->M_booking->get_rute($customer_data['rute_id'])[0];
+		$data['data_rute'] = $this->M_Booking->get_rute($customer_data['rute_id'])[0];
 
-		$this->load->view('template/v_header');
+		$this->load->view('template/V_Header');
 		$this->load->view('V_seat', $data);
-		$this->load->view('template/v_footer');
+		$this->load->view('template/V_Footer');
 	}
 
 	public function proccess()
@@ -94,7 +94,7 @@ class Booking extends CI_Controller
 		$code = 'JO'.rand(11111,99999); //generate reservation code
 		$reservation_code = $code;
 
-		while (count($this->M_booking->check_code_reservation($code)) != 0) { //check code mbok ana nng db :3
+		while (count($this->M_Booking->check_code_reservation($code)) != 0) { //check code mbok ana nng db :3
 			$code = 'JO'.rand(11111,99999);
 			$reservation_code = $code;
 		}
@@ -108,7 +108,7 @@ class Booking extends CI_Controller
 			'rute_id' => $rute_id,
 		];
 
-		$reservation_id = $this->M_booking->insert_reservation($data_reservation); //get last id from reservation
+		$reservation_id = $this->M_Booking->insert_reservation($data_reservation); //get last id from reservation
 		//end insert reservation
 
 		//insert customer
@@ -121,7 +121,7 @@ class Booking extends CI_Controller
 				'email' => $customer_form['email'][$i],
 				'gender' => $customer_form['gender'][$i]
 			];
-			$customer_id[] = $this->M_booking->insert_customer($data_customer_form); //get last id from customer
+			$customer_id[] = $this->M_Booking->insert_customer($data_customer_form); //get last id from customer
 		}
 		//end insert customer
 		
@@ -133,7 +133,7 @@ class Booking extends CI_Controller
 					'reservation_id' => $reservation_id,
 					'seat' => $customer_seat[$i]
 				];
-				$this->M_booking->insert_passengers($data_passengers);
+				$this->M_Booking->insert_passengers($data_passengers);
 			}
 		}
 		//end insert passengers

@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class searchfull extends CI_Controller {
+class Search extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->model('M_booking');
+		$this->load->model('M_Booking');
 	}
 
 	public function index()
@@ -36,15 +36,15 @@ class searchfull extends CI_Controller {
 
 			// $this->session->set_userdata($data_session); //make variabel session
 
-			$search = $this->M_booking->search_rute($data); // search 
+			$search = $this->M_Booking->search_rute($data); // search 
 
 			// var_dump($search);
 			// die;
 			if(count($search) == 0){
 				// echo "tidak ditemukan rute nya :("; //if rute  == 0
-				$this->load->view('template/v_header');
-				$this->load->view('v_searchnotfound');
-				$this->load->view('template/v_footer');
+				$this->load->view('template/V_Header');
+				$this->load->view('V_Search_not_found');
+				$this->load->view('template/V_Footer');
 				
 			}
 
@@ -52,9 +52,9 @@ class searchfull extends CI_Controller {
 				$v_data = [
 					'data' => $search
 				];
-				$this->load->view('template/v_header');
-				$this->load->view('v_searchfull', $v_data); //view if rute > 0
-				$this->load->view('template/v_footer');
+				$this->load->view('template/V_Header');
+				$this->load->view('V_Search', $v_data); //view if rute > 0
+				$this->load->view('template/V_Footer');
 			}
 			
 		}

@@ -4,13 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Prebooking extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
-		$this->load->model('M_booking');
+		$this->load->model('M_Booking');
 	}
 	public function index()
 	{
 		$rute_id = $this->input->get('rute_id'); //get rute from method get
 		$passengers = $this->input->get('passengers'); //get passengers from method get
-		$data_rute = $this->M_booking->get_rute($rute_id); //get data_rute from id
+		$data_rute = $this->M_Booking->get_rute($rute_id); //get data_rute from id
 
 		if($data_rute > 0){ //check if rute exsist
 			$data_rute_price = $data_rute[0]['price']; //get price from vb data_rute
@@ -23,9 +23,9 @@ class Prebooking extends CI_Controller {
 				'total_payment' => $total_payment //total payment
 			];
 
-			$this->load->view('template/v_header');
+			$this->load->view('template/V_Header');
 			$this->load->view('v_prebooking', $data);
-			$this->load->view('template/v_footer');
+			$this->load->view('template/V_Footer');
 		}
 		else{
 			echo "rute tidak ada";

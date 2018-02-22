@@ -6,18 +6,18 @@ class Home extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('M_booking');
+		$this->load->model('M_Booking');
 	}
 
 	public function index()
 	{	
 		
-		$rute_all = $this->M_booking->get_all_rute();
+		$rute_all = $this->M_Booking->get_all_rute();
 		$data['rute_all'] = $rute_all;
 
-		$this->load->view('template/v_header');
+		$this->load->view('template/V_Header');
 		$this->load->view('v_home',$data);
-		$this->load->view('template/v_footer');
+		$this->load->view('template/V_Footer');
 	}
 }
 

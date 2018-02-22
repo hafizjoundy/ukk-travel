@@ -14,7 +14,7 @@
 							</ul>
 
 							<!-- Tab panes -->
-							<form action="<?php echo base_url() ?>searchfull" method="GET">
+							<form action="<?php echo base_url() ?>search" method="GET">
 								<div class="tab-content">
 									<div role="tabpanel" class="tab-pane active" id="flights">
 										<div class="row">
