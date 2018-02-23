@@ -79,7 +79,7 @@ class Booking extends CI_Controller
 		
 		for ($i=0; $i < count($seat_booked); $i++) { 
 			$seat_bookeds[] = $seat_booked[$i]['seat'];
-		}
+		};
 
 		$seat_total = $this->M_Booking->get_seat_total($customer_data['rute_id'])[0]['seat_qty'];
 
@@ -113,6 +113,7 @@ class Booking extends CI_Controller
 			$code = 'JO'.rand(11111,99999);
 			$reservation_code = $code;
 		}
+		
 		$rute_id = $customer_data['rute_id'];
 
 		$data_reservation = [

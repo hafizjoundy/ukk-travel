@@ -15,7 +15,7 @@ Class M_Reservation extends CI_Model{
         $this->db->join('rute','rute.id = reservation.rute_id');
         $this->db->join('transportation','transportation.id = rute.transportation_id');
         $this->db->where(['reservation.reservation_code' => $reservation_code]);
-        return $this->db->get()->result_array();
+        return $this->db->get()->row_array();
     }
 
 }

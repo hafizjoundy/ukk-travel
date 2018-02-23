@@ -2166,14 +2166,48 @@ margin-bottom:25px;
   color: white;
 }
 .table-customer > tbody > tr > td{
-  padding:5px !important;
+  padding:3px !important;
 }
 .table-customer > tbody > tr > .h{
-  color:#b1b1b1;
+  /* color:#b1b1b1; */
 }
 .table-customer > tbody > tr > .c{
   font-weight: 600;
 }
 .table-customer > tbody > .s{
   background-color: #f7f7f7;
+}
+.booking-code{
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+.booking-code > span{
+  margin-bottom: 5px;
+  margin-top: 20px;
+  padding: 5px;
+  background-color: #4fc1e9;
+  color: white;
+  border-radius: 5px;
+  width: 270px;
+}
+.booking-unpaid,.booking-paid{
+  margin-top: 20px;
+}
+.booking-unpaid > h4{
+  margin-bottom: 10px;
+  line-height: 23px;
+}
+.table-payment{
+  width: 100%;
+}
+.table-payment > tbody > tr > td{
+  padding:5px !important;
+}
+.booking-paid > h4{
+  margin-top: 10px;
+  margin-bottom: 15px;    
+}
+.booking-paid > form > button{
+  margin-top: 15px;
 }
