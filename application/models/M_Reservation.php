@@ -18,6 +18,17 @@ Class M_Reservation extends CI_Model{
         return $this->db->get()->row_array();
     }
 
+    public function check_proof_of_payment($reservation_code){
+        $this->db->select('proof_of_payment');
+        $this->db->where('reservation_code', $reservation_code);
+        return $this->db->get('reservation')->row_array();
+    }
+    
+    public function insert_proof_of_payment($reservation_code,$pop){
+        $this->db->where('reservation_code', $reservation_code);
+        $this->db->update('reservation', ['proof_of_payment' => $pop]);
+    }
+
 }
 // SELECT * FROM `reservation` join rute on reservation.rute_id = rute.id join transportation on 
 // transportation.id = rute.transportation_id WHERE reservation.reservation_code = 'JO17334';

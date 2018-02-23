@@ -174,7 +174,7 @@
 				</table>
 				<?php if ( $rute['status'] == 0 ): ?>
 				<div class="booking-unpaid">
-					<h4>Your Booking successfull, to finishing your payment, please transfer your money to : </h4>
+					<h4>Your Booking successfull, to finish your payment, please transfer your money to : </h4>
 					<table class="table-payment">
 						<tr>
 							<td>Mandiri</td>
@@ -195,9 +195,15 @@
 				</div>
 				<div class="booking-paid">
 					<!-- <div class="booking-line"></div> -->
+					<?php if ( $proof_of_payment !== null ): ?>
+						<div style="background-image:url(<?php echo base_url() ?>_assets/proof_of_payment/<?php echo $proof_of_payment ?>)" class="booking-img-proof"></div>
+						<p>waiting for verification..</p>
+					<?php endif; ?>
+
 					<h4>Upload your proof of payment</h4>
-					<form action="">
-						<input class="form-control" type="file">
+					<form action="<?php echo base_url() ?>reservation/proof_of_payment" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="reservation_code" value="<?php echo $_GET['reservation_code'] ?>">
+						<input class="form-control" name="image" type="file">
 						<button class="choose-btn">Upload</button>
 					</form>
 				</div>
@@ -205,7 +211,6 @@
 				<?php else: ?>
 				<div class="booking-paid">
 					<h4>Your payment is successfull</h4>
-					
 				</div>
 				<?php endif; ?>
 				
