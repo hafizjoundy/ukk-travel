@@ -18,9 +18,9 @@
 			<b>
 				<?php
         // convert date to month day using date function php
-        $date = strtotime($_GET['depart_date']);
-        echo date("D d M Y", $date);
-        ?>
+			$date = strtotime($_GET['depart_date']);
+			echo date("D d M Y", $date);
+			?>
 			</b>
 		</p>
 
@@ -57,8 +57,17 @@
 
 		<!-- foreach variabel data as value -->
 		<?php foreach ($data as $value) : ?>
+		<?php 
 
-		<div class="flight-rute row">
+		$seat_bookeds = 0;
+		if (count($value['seat_bookeds']) !== 0) {
+			$seat_bookeds = count($value['seat_bookeds']);
+		}
+		$seat_available = $value['seat_total'] - $seat_bookeds;
+
+		?>
+
+		<div class="flight-rute row <?php echo ($seat_available !== 0 ? '' : 'rute-full' ) ?>">
 			<form class="row form-flight" action="<?php echo base_url() ?>prebooking/" method="GET">
 				<input type="hidden" name="passengers" value="<?php echo $_GET['passengers'] ?>">
 				<input type="hidden" name="rute_from" value="<?php echo $_GET['rute_from'] ?>">
@@ -66,28 +75,38 @@
 				<input type="hidden" name="depart_date" value="<?php
         
         // convert date to month day using date function php
-        $date = strtotime($_GET['depart_date']);
-        echo date(" D d M Y ", $date);
-        ?>">
+																																																		$date = strtotime($_GET['depart_date']);
+																																																		echo date(" D d M Y ", $date);
+																																																		?>">
 				<input type="hidden" name="flight_class" value="<?php echo $_GET['flight_class'] ?>">
-				<input type="hidden" name="rute_id" value="<?php echo $value['id']; ?>">
+				<?php if ( $seat_available !== 0): ?>
+				<input type="hidden" name="rute_id" value="<?php echo $value['id']; ?>">					
+				<?php endif; ?>
 				<div class="col-lg-3">
 					<p>
 						<?php echo $value['code']; ?>
 					</p>
-					<p>
-						<?php echo $value['class']; ?> Class</p>
+						<p>
+						<?php echo $value['class']; ?> Class
+						</p>
+						<p>
+						<?php if ( $seat_available !== 0): ?>
+						Seat Availabel : <?php echo $seat_available ?>
+						<?php else: ?>
+						Seat Not Available
+						<?php endif; ?>	
+						</p>
 				</div>
 				<div class="col-lg-2">
 					<p>
 						<?php 
-                echo date('G:i:s', strtotime($value['depart']));
-                ?>
+					echo date('G:i:s', strtotime($value['depart']));
+					?>
 					</p>
 					<p class="flight-rute-date">
 						<?php 
-                echo date('D d M Y', strtotime($value['depart']));
-                ?>
+					echo date('D d M Y', strtotime($value['depart']));
+					?>
 					</p>
 					<p>
 						<?php echo $value['rute_from']; ?>
@@ -96,13 +115,13 @@
 				<div class="col-lg-2">
 					<p>
 						<?php 
-                echo date('G:i:s', strtotime($value['arrive']));
-                ?>
+					echo date('G:i:s', strtotime($value['arrive']));
+					?>
 					</p>
 					<p class="flight-rute-date">
 						<?php 
-                echo date('D d M Y', strtotime($value['arrive']));
-                ?>
+					echo date('D d M Y', strtotime($value['arrive']));
+					?>
 					</p>
 					<p>
 						<?php echo $value['rute_to']; ?>
@@ -113,12 +132,12 @@
 
 						<!-- duration -->
 						<?php
-            $datetime1 = new DateTime($value['depart']); //convert to datetime
-            $datetime2 = new DateTime($value['arrive']); //convert to datetime
-            $interval = $datetime1->diff($datetime2); //get interval from two datetime
-            echo $interval->format('%d d %H h %i m'); //convert interval to  day hours and minute
+					$datetime1 = new DateTime($value['depart']); //convert to datetime
+					$datetime2 = new DateTime($value['arrive']); //convert to datetime
+					$interval = $datetime1->diff($datetime2); //get interval from two datetime
+					echo $interval->format('%d d %H h %i m'); //convert interval to  day hours and minute
             //materikita.com
-            ?>
+					?>
 
 					</p>
 				</div>
@@ -127,11 +146,15 @@
 
 						<!-- convert number to idr format -->
 						<?php 
-            echo "Rp." . strrev(implode('.', str_split(strrev(strval($value['price'])), 3)));
-            ?>
+					echo "Rp." . strrev(implode('.', str_split(strrev(strval($value['price'])), 3)));
+					?>
 
 					</p>
-					<button class="choose-btn">Choose</button>
+					<?php if ( $seat_available !== 0): ?>
+					<button class="choose-btn">Choose</button>						
+					<?php else: ?>		
+					<button disabled class="choose-btn btn-full">Full</button>					
+					<?php endif; ?>
 				</div>
 			</form>
 		</div>

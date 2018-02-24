@@ -1,6 +1,6 @@
 <div class="flight-wrapper">
 
-<div class="search-flight-title">
+<div class="search-flight-title animated fadeIn">
     <!-- get data from get -->
     <h4>
         <span class="glyphicon glyphicon-plane"></span>
@@ -30,7 +30,7 @@
 </div>
 
 
-<div class="search-flight">
+<div class="search-flight animated fadeInUp">
     <div class="search-header">
         <div class="col-lg-3">
         <h6>Airline</h6>

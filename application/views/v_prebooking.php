@@ -133,6 +133,7 @@
     <form action="<?php echo base_url() ?>prebooking/makebooking" method="POST">
 				<input name="rute_id" value="<?php echo $_GET['rute_id'] ?>" type="hidden">
 				<input name="passengers" value="<?php echo $_GET['passengers'] ?>" type="hidden">
+				<input name="current_url" id="current_url" type="hidden" value=''>
 				<div class='btn-continue animated fadeInUp'>
                     <button class="choose-btn">Continue to Booking</button>
                 </div>

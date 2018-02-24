@@ -103,6 +103,9 @@ figure {
   .header-top .fh5co-link {
     text-align: center;
   }
+  .search-header{
+    display:none;
+  }
 }
 .header-top .fh5co-social a {
   color: rgba(255, 255, 255, 0.7);
@@ -1720,6 +1723,7 @@ div.cs-select span {
 }
 
 #fh5co-page {
+  background-color:#f7f7f7;
   position: relative;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
@@ -1989,9 +1993,11 @@ div.cs-select span {
 /* custom */
 
 .flight-wrapper{
-  background-color: #f7f7f7;
-  padding: 90px 150px;
-  overflow: hidden;
+      /* background-color: #f7f7f7; */
+      padding: 90px 15px;
+      max-width: 1070px;
+      margin: auto;
+      overflow: hidden;
 }
 
 .search-flight-title{
@@ -2188,6 +2194,7 @@ margin-bottom:25px;
   text-align: center;
   margin-bottom: 15px;
   margin-top: 20px;
+  line-height: 2;
 }
 .booking-code > span{
   margin-bottom: 5px;
@@ -2278,4 +2285,16 @@ margin-bottom:25px;
 
 .alert-success{
   background-color:#48ed9c;
+}
+.rute-full{
+  background-color: #ececec;
+}
+.btn-full{
+  background-color:#c7c7c7;
+}
+.btn-full:hover{
+  background-color:#c7c7c7;
+}
+.rute-full:hover{
+  border: 2px solid #c9c9c9;
 }

@@ -26,7 +26,15 @@
 
 							<!-- Tab panes -->
 							<form action="<?php echo base_url() ?>account/signin_process" method="POST">
-								<div class="tab-content">
+							<input type="hidden" name="url_before" value='<?php 
+								if(isset($_GET['url'])){
+									echo $_GET['url'];
+								}
+								else{
+									echo '';
+								}
+								?>'>
+							<div class="tab-content">
 									<div role="tabpanel" class="tab-pane active" id="flights">
 										<div class="row">
 											<div class="col-xxs-12 col-xs-12 mt">

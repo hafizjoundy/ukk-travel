@@ -51,7 +51,9 @@
 	
 	<!-- Main JS -->
 	<script src="<?php echo base_url() ?>_assets/js/main.js"></script>
-
+	<script>
+		document.getElementById('current_url').value = window.location.href;
+	</script>
 	</body>
 </html>
 

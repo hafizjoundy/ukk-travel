@@ -13,7 +13,7 @@ class Booking extends CI_Controller
 	public function index()
 	{
 		if($this->session->userdata('user') == false){
-            redirect(base_url().'account/login');
+			redirect(base_url().'account/signin');
 		}
 		
 		$session_key = $this->input->get('key');
@@ -36,7 +36,7 @@ class Booking extends CI_Controller
 	public function insert_customer()
 	{
 		if($this->session->userdata('user') == false){
-            redirect(base_url().'account/login');
+            redirect(base_url().'account/signin');
 		}
 
 		$key = $this->input->post('key');
@@ -65,7 +65,7 @@ class Booking extends CI_Controller
 	public function seat()
 	{
 		if($this->session->userdata('user') == false){
-            redirect(base_url().'account/login');
+            redirect(base_url().'account/signin');
 		}
 
 		$session_key = $_GET['key'];
@@ -112,7 +112,7 @@ class Booking extends CI_Controller
 	public function proccess()
 	{
 		if($this->session->userdata('user') == false){
-            redirect(base_url().'account/login');
+            redirect(base_url().'account/signin');
 		}
 
 		$user_id = $this->session->userdata('user')['id'];

@@ -34,10 +34,19 @@ class Prebooking extends CI_Controller {
 	}
 
 	public function makebooking(){
+		if($this->input->post('current_url')){
+			$rand = md5(rand(1,999999999999));;
+			$this->session->set_userdata($rand,$this->input->post('current_url'));
+		}
+
+		if($this->session->userdata('user') == false){
+			redirect(base_url().'account/signin?url='.$rand);
+		}
+
 		$passengers = $this->input->post('passengers');
 		$rute_id = $this->input->post('rute_id');
 
-		$session_name = 'JON-'.md5(rand(1,9999)); //make rand session name
+		$session_name = 'JON-'.md5(rand(1,999999999999)); //make rand session name
 		
 		$value = [ //insert some variable into session
 			'passengers' => $passengers, 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 18 Feb 2018 pada 16.23
+-- Generation Time: 24 Feb 2018 pada 13.33
 -- Versi Server: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -42,18 +42,17 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`id`, `name`, `address`, `phone`, `email`, `gender`) VALUES
-(162, 'jondes', 'jondes', '1234', 'gmail', 'l'),
-(163, 'asdfafasdf', 'sadf', '3244', 'sdfasf', 'l'),
-(164, 'asdfasf', 'sadfasdf', '23423', 'adf', 'l'),
-(165, 'asdfsaf', 'asdfsd', '34324', 'sdfsa', 'l'),
-(166, 'adfasfasdf', 'asdfas', '34234', 'asdfsadf', 'l'),
-(167, 'asdfaf', 'sdf', '324', 'adf', 'p'),
-(168, 'as', 'a', 'a', 'a', 'l'),
-(169, 'a', 'sasa', '6756', 'sdfasdf', 'l'),
-(170, 'asdfad', 'sdfsdf', '3434', 'adf', 'l'),
-(171, 'asd', 'sd', '2323', 'asdf', 'l'),
-(172, 'asdf', 'asdf', '12312', 'asdf', 'l'),
-(173, 'asdfaf', 'adf', '234', 'asdf', 'l');
+(198, 'asd', 'dfa', '2323', 'adf', 'l'),
+(199, 'jondes', 'jondes', '9283', 'dfdf', 'l'),
+(200, 'sdf', 'asdf', '23', 'adf', 'l'),
+(201, 'sdfasdf', 'asdfaf', '3242343', 'sdfsadf', 'l'),
+(202, 'asdfa', 'asdf', '324', 'sdf', 'l'),
+(203, 'jondes', 'purwokerto', '23232', 'jondes@gmail.com', 'l'),
+(204, 'apu', 'pu', '2323', 'apu@gmail.com', 'l'),
+(205, 'sdf', 'sad', '232', 'sadas', 'l'),
+(206, 'sdf', 'asdf', '453453', 'sdfsad', 'l'),
+(207, 'jondes', 'jondes', '2323', '', 'l'),
+(208, 'jondes', 'jondes', '1212', 'asdf', 'l');
 
 -- --------------------------------------------------------
 
@@ -73,18 +72,17 @@ CREATE TABLE `passengers` (
 --
 
 INSERT INTO `passengers` (`id`, `customer_id`, `reservation_id`, `seat`) VALUES
-(28, 162, 41, 8),
-(29, 163, 42, 1),
-(30, 164, 42, 2),
-(31, 165, 42, 14),
-(32, 166, 42, 12),
-(33, 167, 54, 3),
-(34, 168, 55, 9),
-(35, 169, 56, 66),
-(36, 170, 57, 47),
-(37, 171, 58, 33),
-(38, 172, 59, 33),
-(39, 173, 60, 29);
+(64, 198, 80, 28),
+(65, 199, 81, 28),
+(66, 200, 82, 36),
+(67, 201, 83, 3),
+(68, 202, 84, 10),
+(69, 203, 85, 24),
+(70, 204, 86, 11),
+(71, 205, 87, 16),
+(72, 206, 88, 9),
+(73, 207, 89, 2),
+(74, 208, 90, 51);
 
 -- --------------------------------------------------------
 
@@ -98,34 +96,26 @@ CREATE TABLE `reservation` (
   `reservation_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int(10) DEFAULT NULL,
   `rute_id` int(10) DEFAULT NULL,
-  `status` int(1) NOT NULL DEFAULT '0'
+  `status` int(1) NOT NULL DEFAULT '0',
+  `proof_of_payment` varchar(222) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `reservation`
 --
 
-INSERT INTO `reservation` (`id`, `reservation_code`, `reservation_date`, `user_id`, `rute_id`, `status`) VALUES
-(41, 'JO58633', '2018-02-16 16:31:04', 8, 2, 0),
-(42, 'JO55015', '2018-02-16 16:34:13', 8, 2, 0),
-(43, 'JO47232', '2018-02-16 17:02:01', 8, NULL, 0),
-(44, 'JO54637', '2018-02-16 17:02:48', 8, NULL, 0),
-(45, 'JO50615', '2018-02-16 17:03:25', 8, NULL, 0),
-(46, 'JO94350', '2018-02-16 17:04:07', 8, NULL, 0),
-(47, 'JO34208', '2018-02-16 17:04:13', 8, NULL, 0),
-(48, 'JO47498', '2018-02-16 17:10:51', 8, NULL, 0),
-(49, 'JO20373', '2018-02-16 17:11:15', 8, NULL, 0),
-(50, 'JO34775', '2018-02-16 17:19:24', 8, NULL, 0),
-(51, 'JO69138', '2018-02-16 17:28:47', 8, NULL, 0),
-(52, 'JO39723', '2018-02-16 17:37:53', 8, NULL, 0),
-(53, 'JO82585', '2018-02-16 17:38:02', 8, NULL, 0),
-(54, 'JO65546', '2018-02-16 17:39:08', 8, 4, 0),
-(55, 'JO38353', '2018-02-16 17:42:27', 8, 2, 0),
-(56, 'JO89338', '2018-02-16 17:43:11', 8, 2, 0),
-(57, 'JO96420', '2018-02-16 19:05:06', 8, 2, 0),
-(58, 'JO47265', '2018-02-16 19:06:04', 8, 4, 0),
-(59, 'JO87411', '2018-02-17 15:53:26', 8, 2, 0),
-(60, 'JO72080', '2018-02-18 15:22:18', 8, 2, 0);
+INSERT INTO `reservation` (`id`, `reservation_code`, `reservation_date`, `user_id`, `rute_id`, `status`, `proof_of_payment`) VALUES
+(80, 'JO65241', '2018-02-24 05:04:01', 8, 5, 0, '56ff48b457f041612af86b8d01e99b811b424d5e9837c7f95a4d14a67470e5af.jpg'),
+(81, 'JO91484', '2018-02-24 05:11:56', 8, 6, 1, 'c384824e5d150703423bcf5a8896a3f8079c22748d4a070d6f93ba17d34cfc07.JPG'),
+(82, 'JO91378', '2018-02-24 06:05:14', 8, 2, 0, NULL),
+(83, 'JO97729', '2018-02-24 06:59:49', 8, 2, 0, NULL),
+(84, 'JO52900', '2018-02-24 07:03:45', 8, 2, 0, '1be78b8def797f0ac5a82fe0a9f664c009ef93e950c92b2f5e3987ceba88da5d.JPG'),
+(85, 'JO70289', '2018-02-24 07:23:41', 8, 2, 0, NULL),
+(86, 'JO95593', '2018-02-24 08:56:29', 12, 2, 0, '62dffb2929638dc96b6bfcfb425c1294a4f0c65cc7590795e039a8198b70629e.png'),
+(87, 'JO34643', '2018-02-24 09:57:12', 8, 2, 0, '82a9b322f81d53220cd72c66706166987f8377aa999beaf4eabf82be560c0a66.jpg'),
+(88, 'JO78444', '2018-02-24 11:16:34', 8, 2, 0, NULL),
+(89, 'JO33857', '2018-02-24 11:31:50', 8, 2, 0, NULL),
+(90, 'JO35149', '2018-02-24 11:33:04', 12, 2, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -151,7 +141,8 @@ CREATE TABLE `rute` (
 INSERT INTO `rute` (`id`, `depart`, `arrive`, `rute_from`, `rute_to`, `price`, `class`, `transportation_id`) VALUES
 (2, '2018-02-15 11:07:30', '2018-02-22 17:00:00', 'Banjarnegara', 'Purwokerto', 45999, 'First', 2),
 (4, '2018-02-15 11:04:04', '2018-02-22 22:05:07', 'Banjarnegara', 'Purwokerto', 55555, 'First', 2),
-(5, '2018-02-16 17:28:40', '2018-02-06 20:00:01', 'Banjarnegara', 'Purwokerto', 56345345, 'First', 1);
+(5, '2018-02-16 17:28:40', '2018-02-06 20:00:01', 'Banjarnegara', 'Purwokerto', 56345345, 'First', 1),
+(6, '2018-02-24 05:11:22', '2018-02-26 06:06:07', 'Wonosobo', 'Cilacap', 444444, 'Economy', 1);
 
 -- --------------------------------------------------------
 
@@ -171,7 +162,7 @@ CREATE TABLE `transportation` (
 --
 
 INSERT INTO `transportation` (`id`, `code`, `description`, `seat_qty`) VALUES
-(1, 'Lion Air - JS3E', 'pesawat mabur', '12'),
+(1, 'Lion Air - JS3E', 'pesawat mabur', '66'),
 (2, 'Batik Air -\r\n JS3E', 'gelogelo', '66');
 
 -- --------------------------------------------------------
@@ -192,7 +183,13 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `level`) VALUES
-(8, 'jondes', '$2y$10$T41KDj098j7q7mRSh0Vor.j.V/GJVbfH.sxCsvF2wsZjnIm0Wtctm', 1);
+(8, 'jondes', '$2y$10$T41KDj098j7q7mRSh0Vor.j.V/GJVbfH.sxCsvF2wsZjnIm0Wtctm', 1),
+(12, 'apu', '$2y$10$0cRlF/ZahwjapSjIrMl1Y.bWc2uDdPxNUupVV/SR/R8S4bt6..AgO', 1),
+(13, 'mbuh', '$2y$10$ZqimX84V59fX2gy9Bdykne/QUDMm1bD/qEE6KsmB1C.dWldQTD3aS', 1),
+(14, 'sfgsdfg', '$2y$10$dY5.Wrk3QD27gOppL6qcfu6Hgp7WfK92PlnkWYE6KnTPLcEoOIoE2', 1),
+(20, 'dsf', '$2y$10$NB/OImEPv6O9/gaef/S7a.HlQmvJtmdYKLWWtHLQVpe8wGBMujuZi', 1),
+(22, 'hel', '$2y$10$R/BeEE1D7kkDFUx0oKpXnu9RXiVWxMTU04P7XooACS5Jz42n7bI9e', 1),
+(23, 'pu', '$2y$10$mq7HeOpLJcviX9DOrcDIFuR1M/RMLNsCP8BYokwHkG19OwmEyE9Dm', 1);
 
 --
 -- Indexes for dumped tables
@@ -237,7 +234,8 @@ ALTER TABLE `transportation`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -247,25 +245,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
 
 --
 -- AUTO_INCREMENT for table `passengers`
 --
 ALTER TABLE `passengers`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `rute`
 --
 ALTER TABLE `rute`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `transportation`
@@ -277,7 +275,7 @@ ALTER TABLE `transportation`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
