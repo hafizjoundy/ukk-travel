@@ -1,5 +1,5 @@
 <div class="fh5co-hero">
-	<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(<?php echo base_url() ?>_assets/images/cover_bg_1.jpg);">
+	<div class="fh5co-cover" data-stellar-background-ratio="0.5">
 		<div class="desc">
 			<div class="container">
 				<div class="row">
@@ -12,6 +12,17 @@
 									<a href="#flights" aria-controls="flights" role="tab" data-toggle="tab">Signin</a>
 								</li>
 							</ul>
+							<?php if ( isset($_GET['alert']) ): ?>
+								<?php if ( $_GET['alert'] == 'success' ): ?>
+								<div class="alert alert-success">
+									<p>Sign up successful</p>
+								</div>
+								<?php elseif ( $_GET['alert'] == 'failed' ): ?>
+								<div class="alert alert-failed">
+									<p>Username and password do not match</p>
+								</div>
+								<?php endif; ?>
+							<?php endif; ?>				
 
 							<!-- Tab panes -->
 							<form action="<?php echo base_url() ?>account/signin_process" method="POST">

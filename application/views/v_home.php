@@ -83,7 +83,7 @@
 						<div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1">
 							<!-- <p>Jondes<a href="" target="_blank" class="fh5co-site-name">FreeHTML5.co</a></p> -->
 							<h2>JONFLIGHT</h2>
-							<h3>Everithing will be 'SANS'</h3>
+							<h3>Everything will be 'SANS'</h3>
 							<span class="price">Start from 99.999 IDR</span>
 							<!-- <p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p> -->
 						</div>

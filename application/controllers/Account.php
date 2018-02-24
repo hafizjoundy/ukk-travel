@@ -24,11 +24,27 @@ class Account extends CI_Controller {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
-        $password_get = $this->M_Account->get_password_users($username);
-        $password_get = $password_get[0]["password"];
+        $user_data = $this->M_Account->get_password_users($username);
 
-        var_dump(password_verify($password, $password_get));
+        if(count($user_data) == 0){
+            redirect(base_url().'account/signin?alert=failed');
+        }
 
+        $password_get = $user_data[0]["password"];
+        $user_id = $user_data[0]["id"];
+
+       if(password_verify($password, $password_get) == true){
+            $value = [
+                'username' => $username,
+                'id' => $user_id
+            ];
+            $this->session->set_userdata('user',$value);
+            redirect(base_url());
+       }
+
+       else{
+            redirect(base_url().'account/signin?alert=failed');
+       }
         // var_dump($password_get);
     }
 
@@ -50,18 +66,19 @@ class Account extends CI_Controller {
             "password" => $password,
             "level" => 1
         ];
-
+        
         if($this->M_Account->signup_insert($data) == true){
-            echo "pendaftaran sukses";
+            redirect(base_url().'account/signin?alert=success');
         }
         else{
-            echo "pendaftaran gagal";
+            redirect(base_url().'account/signup?alert=failed');
         }
     }
 
     public function logout()
     {
-
+        $this->session->unset_userdata('user');
+        redirect(base_url());
     }
 
 }

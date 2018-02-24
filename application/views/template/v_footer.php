@@ -4,9 +4,9 @@
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 text-center">
 							<p class="fh5co-social-icons">
-								<a href="http://twitter.com/hafiz_js"><i class="icon-twitter2"></i></a>
-								<a href="http://fb.com/fighter.cyber1"><i class="icon-facebook2"></i></a>
-								<a href="http://instagram.com/hafiz_js"><i class="icon-instagram"></i></a>
+								<a target="blank" href="http://twitter.com/hafiz_js"><i class="icon-twitter2"></i></a>
+								<a target="blank" href="http://fb.com/fighter.cyber1"><i class="icon-facebook2"></i></a>
+								<a target="blank" href="http://instagram.com/haffjjj"><i class="icon-instagram"></i></a>
 							</p>
 							<p>Copyright 2018 JONFLIGHT. All Rights Reserved. <br>Made with <i class="icon-heart3"></i> by <a href="http://jondes.com/" target="_blank">JONDES</a></p>
 						</div>

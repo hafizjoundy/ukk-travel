@@ -6,7 +6,7 @@
 			<div class="customer-data">
 				<div class="booking-title">
 					<h4>
-						<span class="glyphicon glyphicon-user"></span>
+						<span class="glyphicon glyphicon-modal-window"></span>
 						Booking
 					</h4>
 					<div class="booking-line"></div>

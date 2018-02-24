@@ -6,7 +6,7 @@
 			<div class="customer-data">
 				<div class="booking-title">
 					<h4>
-						<span class="glyphicon glyphicon-user"></span>
+						<span class="glyphicon glyphicon-list-alt"></span>
 						My Reservation
 					</h4>
 					<div class="booking-line"></div>

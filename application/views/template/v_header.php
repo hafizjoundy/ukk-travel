@@ -9,25 +9,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>JOLIGHT</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
-	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
-	<meta name="author" content="FREEHTML5.CO" />
-
-  <!-- 
-	//////////////////////////////////////////////////////
-
-	FREE HTML5 TEMPLATE 
-	DESIGNED & DEVELOPED by FREEHTML5.CO
-		
-	Website: 		http://freehtml5.co/
-	Email: 			info@freehtml5.co
-	Twitter: 		http://twitter.com/fh5co
-	Facebook: 		https://www.facebook.com/fh5co
-
-	//////////////////////////////////////////////////////
-	 -->
-
-  	<!-- Facebook and Twitter integration -->
+	<meta name="description" content="JONFLIGHT" />
+	<meta name="keywords" content="JONFLIGHT" />
+	<meta name="author" content="JONFLIGHT" />
 	<meta property="og:title" content=""/>
 	<meta property="og:image" content=""/>
 	<meta property="og:url" content=""/>
@@ -84,11 +68,16 @@
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li class="active"><a href="<?php echo base_url() ?>">Home</a></li>
+
+							<?php if ( $this->session->userdata('user') ): ?>
 							<li class=""><a href="<?php echo base_url() ?>reservation">My Reservation</a></li>
-							<li class="header-username"><a href="">Jondes</a></li>
-							<li class=""><a href="<?php echo base_url() ?>">Logout</a></li>
+							<li class="header-username"><a><?php echo $this->session->userdata('user')['username'] ?></a></li>
+							<li class=""><a href="<?php echo base_url() ?>account/logout">Logout</a></li>
+							
+							<?php else: ?>
 							<li><a href="<?php echo base_url() ?>account/signin">Signin</a></li>
 							<li><a href="<?php echo base_url() ?>account/signup">Signup</a></li>
+							<?php endif; ?>
 
 						</ul>
 					</nav>

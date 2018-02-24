@@ -2105,9 +2105,11 @@ margin-bottom:25px;
 }
 
 /* signin */
-.form-signin{
-  padding-left: 370px;
-  padding-right: 370px;
+.form-signin > .tabulation{
+  width: 400px;
+  left: 50%;
+  margin-left: -199px;
+  position: absolute;
 }
 
 .choose-btn{
@@ -2255,4 +2257,25 @@ margin-bottom:25px;
 }
 .status-check:hover{
   color:white;
+}
+.alert{
+  width:100%;
+  margin-top: 35px;
+  text-align:center;
+  height: unset !important;
+  border-radius:0px;
+}
+.alert > p{
+  font-weight: 600;
+  color:white !important;
+  /* padding: 15px; */
+  margin:0px !important;
+}
+
+.alert-failed{
+  background-color:#ff4848;
+}
+
+.alert-success{
+  background-color:#48ed9c;
 }

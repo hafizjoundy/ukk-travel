@@ -11,7 +11,11 @@ class Reservation extends CI_Controller
     }
 
     public function index(){
-        $user_id = 8;
+        if($this->session->userdata('user') == false){
+            redirect(base_url());
+        }
+
+        $user_id = $this->session->userdata('user')['id'];
 
         $reservation = $this->M_Reservation->get_reservation($user_id);
 
