@@ -60,14 +60,14 @@
 		<?php 
 
 		$seat_bookeds = 0;
-		if (count($value['seat_bookeds']) !== 0) {
+		if (count($value['seat_bookeds']) > 0) {
 			$seat_bookeds = count($value['seat_bookeds']);
 		}
 		$seat_available = $value['seat_total'] - $seat_bookeds;
 
 		?>
 
-		<div class="flight-rute row <?php echo ($seat_available !== 0 ? '' : 'rute-full' ) ?>">
+		<div class="flight-rute row <?php echo ($seat_available > 0 ? '' : 'rute-full' ) ?>">
 			<form class="row form-flight" action="<?php echo base_url() ?>prebooking/" method="GET">
 				<input type="hidden" name="passengers" value="<?php echo $_GET['passengers'] ?>">
 				<input type="hidden" name="rute_from" value="<?php echo $_GET['rute_from'] ?>">
@@ -79,7 +79,7 @@
 																																																		echo date(" D d M Y ", $date);
 																																																		?>">
 				<input type="hidden" name="flight_class" value="<?php echo $_GET['flight_class'] ?>">
-				<?php if ( $seat_available !== 0): ?>
+				<?php if ( $seat_available > 0): ?>
 				<input type="hidden" name="rute_id" value="<?php echo $value['id']; ?>">					
 				<?php endif; ?>
 				<div class="col-lg-3">
@@ -90,7 +90,7 @@
 						<?php echo $value['class']; ?> Class
 						</p>
 						<p>
-						<?php if ( $seat_available !== 0): ?>
+						<?php if ( $seat_available > 0): ?>
 						Seat Availabel : <?php echo $seat_available ?>
 						<?php else: ?>
 						Seat Not Available
@@ -150,7 +150,7 @@
 					?>
 
 					</p>
-					<?php if ( $seat_available !== 0): ?>
+					<?php if ( $seat_available > 0): ?>
 					<button class="choose-btn">Choose</button>						
 					<?php else: ?>		
 					<button disabled class="choose-btn btn-full">Full</button>					
