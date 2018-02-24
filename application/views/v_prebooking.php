@@ -1,6 +1,6 @@
 <div class="flight-wrapper">
 
-	<div class="search-flight-title">
+	<div class="search-flight-title animated fadeIn">
 		<!-- get data from get -->
 		<h4>
 			<span class="glyphicon glyphicon-plane"></span>
@@ -36,7 +36,7 @@
 	</div>
 	<!-- ###### -->
 	<div class="flight-booking-info row">
-		<div class="col-lg-7 ">
+		<div class="col-lg-7 animated fadeInLeft">
             <div class="flight-booking-1">
                 <div class="booking-title">
                     <h4><span class="glyphicon glyphicon-plane"></span> Flight Details</h4>
@@ -93,7 +93,7 @@
 			</table>
             </div>
         </div>
-        <div class="col-lg-5 ">
+        <div class="col-lg-5 animated fadeInRight">
             <div class="flight-booking-2">
                 <div class="booking-title">
                     <h4><span class="glyphicon glyphicon-pencil"></span> Summary</h4>
@@ -133,7 +133,7 @@
     <form action="<?php echo base_url() ?>prebooking/makebooking" method="POST">
 				<input name="rute_id" value="<?php echo $_GET['rute_id'] ?>" type="hidden">
 				<input name="passengers" value="<?php echo $_GET['passengers'] ?>" type="hidden">
-				<div class='btn-continue'>
+				<div class='btn-continue animated fadeInUp'>
                     <button class="choose-btn">Continue to Booking</button>
                 </div>
 	</form>

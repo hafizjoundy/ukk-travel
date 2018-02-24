@@ -3,7 +3,7 @@
 	<!-- ###### -->
 	<div class="flight-booking-info row">
 
-		<div class="col-lg-7 ">
+		<div class="col-lg-7 animated fadeInLeft">
 
 			<form action="<?php echo base_url() ?>booking/insert_customer" method="POST">
 				<input name="key" value="<?php echo $_GET['key'] ?>" type="hidden">
@@ -51,7 +51,7 @@
 
 
 
-		<div class="col-lg-5 ">
+		<div class="col-lg-5 animated fadeInRight">
 			<div class="flight-booking-1">
 				<div class="booking-title">
 					<h4>
@@ -148,7 +148,7 @@
 		</div>
 	</div>
 
-	<div class="booking-continue">
+	<div class="booking-continue animated fadeInUp">
 		<button type="submit" name="submit" class="choose-btn">Continue</button>
 	</div>
 

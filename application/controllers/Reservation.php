@@ -10,6 +10,18 @@ class Reservation extends CI_Controller
         $this->load->model('M_Reservation');
     }
 
+    public function index(){
+        $user_id = 8;
+
+        $reservation = $this->M_Reservation->get_reservation($user_id);
+
+        $data['reservation'] = $reservation;
+
+        $this->load->view('template/V_Header');
+        $this->load->view('V_Reservation',$data);
+        $this->load->view('template/V_Footer');
+    }
+
     public function status()
     {
         // $user_id =
@@ -23,7 +35,7 @@ class Reservation extends CI_Controller
         if (count($data['customer']) or count($data['customer']) == 0)
 
         $this->load->view('template/V_Header');
-        $this->load->view('V_Reservation', $data);
+        $this->load->view('V_Reservation_status', $data);
         $this->load->view('template/V_Footer');
     }
     public function proof_of_payment()

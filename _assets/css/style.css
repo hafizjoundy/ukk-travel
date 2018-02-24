@@ -133,6 +133,10 @@ figure {
   }
 }
 
+.fh5co-cover{
+  background:0px 5px rgb(67, 182, 221);
+}
+
 .fh5co-cover,
 .fh5co-hero {
   position: relative;
@@ -378,7 +382,7 @@ figure {
 }
 #fh5co-logo i {
   position: absolute;
-  top: 0;
+  top: -4px;
   left: 0;
   font-size: 16px;
   color: #4fc1e9;
@@ -1612,7 +1616,8 @@ div.cs-select span {
 
 #footer {
   background: #393e46;
-  padding: 60px 0 40px;
+  padding: 60px 0 0px;
+  
 }
 #footer p {
   color: rgba(255, 255, 255, 0.7);
@@ -1985,7 +1990,7 @@ div.cs-select span {
 
 .flight-wrapper{
   background-color: #f7f7f7;
-  padding: 50px 150px;
+  padding: 90px 150px;
   overflow: hidden;
 }
 
@@ -2219,4 +2224,35 @@ margin-bottom:25px;
   background-position: center;
   background-size:cover;
   background-repeat:no-repeat;
+}
+.header-username > a{
+  background-color: #4fc1e9;
+  color: white;
+  border-radius: 5px;
+}
+.header-username > a:hover{
+  color:white !important;
+}
+.table-reservation > tbody > tr >td > .status-paid{
+  padding: 7px 22px;
+}
+.table-reservation > thead > tr > th, .table-reservation{
+  text-align: center !important;
+}
+.table-reservation > tbody > tr >td > .status-unpaid{
+  padding: 7px 10px;
+}
+.reservation-route{
+  text-align: left;
+}
+.status-check{
+  margin-bottom: 15px;
+  padding: 7px 10px;
+  background-color: #4fc1e9;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+}
+.status-check:hover{
+  color:white;
 }

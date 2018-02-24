@@ -3,7 +3,7 @@
 	<!-- ###### -->
 	<div class="flight-booking-info row">
 
-		<div class="col-lg-7 ">
+		<div class="col-lg-7 animated fadeInLeft">
 			<div class="customer-data">
 				<div class="booking-title">
 					<h4>
@@ -111,7 +111,7 @@
 
 		</script>
 
-		<div class="col-lg-5 ">
+		<div class="col-lg-5 animated fadeInRight">
 			<div class="flight-booking-1">
 				<div class="booking-title">
 					<h4>
@@ -208,7 +208,7 @@
 		</div>
 	</div>
 
-	<div class="booking-continue">
+	<div class="booking-continue animated fadeInUp">
 		<button type="submit" name="submit" class="choose-btn">Continue</button>
 	</div>
 

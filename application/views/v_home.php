@@ -1,5 +1,5 @@
 <div class="fh5co-hero">
-	<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(<?php echo base_url() ?>_assets/images/cover_bg_1.jpg);">
+	<div class="fh5co-cover" data-stellar-background-ratio="0">
 		<div class="desc">
 			<div class="container">
 				<div class="row">
@@ -82,9 +82,9 @@
 					<div class="desc2 animate-box">
 						<div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1">
 							<!-- <p>Jondes<a href="" target="_blank" class="fh5co-site-name">FreeHTML5.co</a></p> -->
-							<h2>Jondes Flight Book</h2>
-							<h3>Book Your Travel</h3>
-							<span class="price">$ 59,999</span>
+							<h2>JONFLIGHT</h2>
+							<h3>Everithing will be 'SANS'</h3>
+							<span class="price">Start from 99.999 IDR</span>
 							<!-- <p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p> -->
 						</div>
 					</div>

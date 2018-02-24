@@ -84,7 +84,9 @@
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li class="active"><a href="<?php echo base_url() ?>">Home</a></li>
-							<li><a href="#">About</a></li>
+							<li class=""><a href="<?php echo base_url() ?>reservation">My Reservation</a></li>
+							<li class="header-username"><a href="">Jondes</a></li>
+							<li class=""><a href="<?php echo base_url() ?>">Logout</a></li>
 							<li><a href="<?php echo base_url() ?>account/signin">Signin</a></li>
 							<li><a href="<?php echo base_url() ?>account/signup">Signup</a></li>
 

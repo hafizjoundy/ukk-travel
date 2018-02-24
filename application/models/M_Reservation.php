@@ -1,6 +1,13 @@
 <?php
 
 Class M_Reservation extends CI_Model{
+    public function get_reservation($user_id){
+        $this->db->select('*');
+        $this->db->from('reservation');
+        $this->db->join('rute','rute.id = reservation.rute_id');
+        $this->db->where(['user_id' => $user_id]);
+        return $this->db->get()->result_array();
+    }
     public function get_all_customer($reservation_code){
         $this->db->select('*');
         $this->db->from('reservation');
