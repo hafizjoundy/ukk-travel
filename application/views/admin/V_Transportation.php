@@ -1,11 +1,11 @@
 <section class="content-header">
-	<h1>User</h1>
+	<h1>Transportation</h1>
 	<br>
 	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-add">Add User +</button>
 	<ol class="breadcrumb">
 		<li>
 			<a href="http://[::1]/lte/admin/dashboard">
-				<i class="fa fa-dashboard"></i> Reservation</a>
+				<i class="fa fa-dashboard"></i> Transportation</a>
 		</li>
 		<li class="active">View</li>
 	</ol>
@@ -22,35 +22,27 @@
 					<table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Name</th>
-								<th>Address</th>
-								<th>Phone</th>
-								<th>Email</th>
-								<th>Gender</th>
+								<th>Code</th>
+								<th>Description</th>
+								<th>Total Seat</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach ($customer as $value) : ?>
+							<?php foreach ($transportation as $value) : ?>
 							<tr>
 								<td>
-									<?php echo $value['name'] ?>
+									<?php echo $value['code'] ?>
 								</td>
 								<td>
-									<?php echo $value['address'] ?>
+									<?php echo $value['description'] ?>
 								</td>
 								<td>
-									<?php echo $value['phone'] ?>
-								</td>
-								<td>
-									<?php echo $value['email'] ?>
-								</td>
-								<td>
-									<?php echo $value['gender'] ?>
+									<?php echo $value['seat_qty'] ?>
 								</td>
 								<td>
 									<button type="button" onclick="viewedit(<?php echo $value['id'] ?>)" class="btn btn-success" data-toggle="modal" data-target="#modal-viewedit">View/Edit</button>
-									<a onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger" href="<?php echo base_url() ?>admin/customer/delete/<?php echo $value['id']?>">Delete</a>
+									<a onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger" href="<?php echo base_url() ?>admin/transportation/delete/<?php echo $value['id']?>">Delete</a>
 								</td>
 							</tr>
 							<?php endforeach; ?>
@@ -95,43 +87,32 @@
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
-									<h4 class="modal-title">Add User</h4>
+									<h4 class="modal-title">Add Transportation</h4>
 								</div>
 								<div class="modal-body">
 
 									<!-- ################# -->
-									<form role="form" action="<?php echo base_url() ?>admin/customer/add" method="POST">
+									<form role="form" action="<?php echo base_url() ?>admin/transportation/add" method="POST">
 										<!-- <input type="hidden" name="id" value="<?php echo $reservation['id'] ?>"> -->
 										<div class="box-body">
                                             <div class="form-group">
-												<label for="exampleInputEmail1">Name</label>
-												<input name="name" value="" class="form-control" id="exampleInputEmail1" placeholder="Name">
+												<label for="exampleInputEmail1">Code</label>
+												<input name="code" value="" class="form-control" id="exampleInputEmail1" placeholder="Code">
                                             </div>
 											<div class="form-group">
-												<label for="exampleInputEmail1">Address</label>
-												<input name="address" value="" class="form-control" id="exampleInputEmail1" placeholder="Address">
+												<label for="exampleInputEmail1">Description</label>
+												<input name="description" value="" class="form-control" id="exampleInputEmail1" placeholder="Description">
                                             </div>
                                             <div class="form-group">
-												<label for="exampleInputEmail1">Phone</label>
-												<input name="phone" value="" class="form-control" id="exampleInputEmail1" placeholder="Phone">
+												<label for="exampleInputEmail1">Total Seat</label>
+												<input name="totalseat" value="" class="form-control" id="exampleInputEmail1" placeholder="totalseat">
                                             </div>
-                                            <div class="form-group">
-												<label for="exampleInputEmail1">Email</label>
-												<input name="email" value="" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                                            </div>
-                                            <div class="form-group">
-												<label for="exampleInputEmail1">Gender</label>
-												<select name="gender" class="form-control" name="" id="">
-                                                    <option value="l">Male</option>
-                                                    <option value="p">Female</option>
-                                                </select>
-											</div>
+            
 
 										</div>
 										<!-- /.box-body -->
-
 										<div class="box-footer">
-											<button type="submit" class="btn btn-primary">Add User</button>
+											<button type="submit" class="btn btn-primary">Add Transportation</button>
 										</div>
 									</form>
 									<!-- ################# -->

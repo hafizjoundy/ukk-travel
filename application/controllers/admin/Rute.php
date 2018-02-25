@@ -1,26 +1,28 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Customer extends CI_Controller {
+class rute extends CI_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('admin/M_Customer_Admin');
+		$this->load->model('admin/M_Rute_Admin');
 	}
 
 	public function index()
 	{	
-		$customer = $this->M_Customer_Admin->get_customer();
-		$data['customer'] = $customer;
+		$rute = $this->M_Rute_Admin->get_rute();
+		$transportation = $this->M_Rute_Admin->get_transportation();
+		$data['rute'] = $rute;
+		$data['transportation'] = $transportation;
 		// var_dump($data);
 		// die;
         $this->load->view('admin/template/V_Header');
-		$this->load->view('admin/V_Customer',$data);
+		$this->load->view('admin/V_rute',$data);
 		
 		$script = '<script>
 		function viewedit(id){
-		  $.ajax({url: "'.base_url().'admin/customer/viewedit/"+id, success: function(result){
+		  $.ajax({url: "'.base_url().'admin/rute/viewedit/"+id, success: function(result){
 					$("#viewedit").html(result);
 		  }});
 		}
@@ -44,19 +46,19 @@ class Customer extends CI_Controller {
             'gender' => $gender  
         ];
         
-        $this->M_Customer_Admin->add($data);
+        $this->M_Rute_Admin->add($data);
 
-        redirect(base_url().'admin/customer');
+        redirect(base_url().'admin/rute');
     }
 
 	public function viewedit($id = null){
 		if($id == null){
-			redirect(base_url().'admin/customer');
+			redirect(base_url().'admin/rute');
 		}
 
-		$data['customer'] = $this->M_Customer_Admin->get_customer_id($id);
+		$data['rute'] = $this->M_Rute_Admin->get_rute_id($id);
 
-		$this->load->view('admin/V_Customer_Viewedit',$data);
+		$this->load->view('admin/V_rute_Viewedit',$data);
 		
 	}
 
@@ -76,15 +78,15 @@ class Customer extends CI_Controller {
             'gender' => $gender  
         ];
 
-		$this->M_Customer_Admin->update($data,$id);
-		redirect(base_url().'admin/customer');
+		$this->M_Rute_Admin->update($data,$id);
+		redirect(base_url().'admin/rute');
 	}
 
 	public function delete($id = null){
 		if($id == null){
-			redirect(base_url().'admin/customer');
+			redirect(base_url().'admin/rute');
 		}
-		$this->M_Customer_Admin->delete($id);	
-		redirect(base_url().'admin/customer');			
+		$this->M_Rute_Admin->delete($id);	
+		redirect(base_url().'admin/rute');			
 	}
 }

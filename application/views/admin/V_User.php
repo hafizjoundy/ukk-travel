@@ -5,7 +5,7 @@
 	<ol class="breadcrumb">
 		<li>
 			<a href="http://[::1]/lte/admin/dashboard">
-				<i class="fa fa-dashboard"></i> Reservation</a>
+				<i class="fa fa-dashboard"></i> User</a>
 		</li>
 		<li class="active">View</li>
 	</ol>
@@ -22,35 +22,27 @@
 					<table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Name</th>
-								<th>Address</th>
-								<th>Phone</th>
-								<th>Email</th>
-								<th>Gender</th>
+								<th>Username</th>
+								<th>Password</th>
+								<th>Level</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach ($customer as $value) : ?>
+							<?php foreach ($user as $value) : ?>
 							<tr>
 								<td>
-									<?php echo $value['name'] ?>
+									<?php echo $value['username'] ?>
 								</td>
 								<td>
-									<?php echo $value['address'] ?>
+									<?php echo $value['password'] ?>
 								</td>
 								<td>
-									<?php echo $value['phone'] ?>
-								</td>
-								<td>
-									<?php echo $value['email'] ?>
-								</td>
-								<td>
-									<?php echo $value['gender'] ?>
-								</td>
+									<?php echo $value['level'] ?>
+</td>
 								<td>
 									<button type="button" onclick="viewedit(<?php echo $value['id'] ?>)" class="btn btn-success" data-toggle="modal" data-target="#modal-viewedit">View/Edit</button>
-									<a onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger" href="<?php echo base_url() ?>admin/customer/delete/<?php echo $value['id']?>">Delete</a>
+									<a onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger" href="<?php echo base_url() ?>admin/user/delete/<?php echo $value['id']?>">Delete</a>
 								</td>
 							</tr>
 							<?php endforeach; ?>
@@ -69,7 +61,7 @@
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
-									<h4 class="modal-title">View/Edit Reservation</h4>
+									<h4 class="modal-title">View/Edit User</h4>
 								</div>
 								<div class="modal-body">
 
@@ -100,30 +92,22 @@
 								<div class="modal-body">
 
 									<!-- ################# -->
-									<form role="form" action="<?php echo base_url() ?>admin/customer/add" method="POST">
+									<form role="form" action="<?php echo base_url() ?>admin/user/add" method="POST">
 										<!-- <input type="hidden" name="id" value="<?php echo $reservation['id'] ?>"> -->
 										<div class="box-body">
                                             <div class="form-group">
-												<label for="exampleInputEmail1">Name</label>
-												<input name="name" value="" class="form-control" id="exampleInputEmail1" placeholder="Name">
+												<label for="exampleInputEmail1">Username</label>
+												<input name="username" value="" class="form-control" id="exampleInputEmail1" placeholder="Username">
                                             </div>
 											<div class="form-group">
-												<label for="exampleInputEmail1">Address</label>
-												<input name="address" value="" class="form-control" id="exampleInputEmail1" placeholder="Address">
+												<label for="exampleInputEmail1">Password</label>
+												<input name="password" value="" class="form-control" id="exampleInputEmail1" placeholder="Password">
                                             </div>
                                             <div class="form-group">
-												<label for="exampleInputEmail1">Phone</label>
-												<input name="phone" value="" class="form-control" id="exampleInputEmail1" placeholder="Phone">
-                                            </div>
-                                            <div class="form-group">
-												<label for="exampleInputEmail1">Email</label>
-												<input name="email" value="" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                                            </div>
-                                            <div class="form-group">
-												<label for="exampleInputEmail1">Gender</label>
-												<select name="gender" class="form-control" name="" id="">
-                                                    <option value="l">Male</option>
-                                                    <option value="p">Female</option>
+												<label for="exampleInputEmail1">Level</label>
+												<select name="level" class="form-control" name="" id="">
+                                                    <option value="2">Admin</option>
+                                                    <option value="1">User</option>
                                                 </select>
 											</div>
 

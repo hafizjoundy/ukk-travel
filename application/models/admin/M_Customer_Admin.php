@@ -8,6 +8,11 @@ Class M_Customer_Admin extends CI_Model{
         $this->db->where(['id' => $id]);
         return $this->db->get('customer')->row_array();
     }
+
+    public function add($data){
+        $this->db->insert('customer',$data);
+    }
+
     public function update($data,$id){
         $this->db->set($data);
         $this->db->where('id',$id);

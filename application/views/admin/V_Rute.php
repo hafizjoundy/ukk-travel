@@ -1,11 +1,11 @@
 <section class="content-header">
-	<h1>User</h1>
+	<h1>Rute</h1>
 	<br>
-	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-add">Add User +</button>
+	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-add">Add Rute +</button>
 	<ol class="breadcrumb">
 		<li>
 			<a href="http://[::1]/lte/admin/dashboard">
-				<i class="fa fa-dashboard"></i> Reservation</a>
+				<i class="fa fa-dashboard"></i> Rute</a>
 		</li>
 		<li class="active">View</li>
 	</ol>
@@ -22,35 +22,30 @@
 					<table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Name</th>
-								<th>Address</th>
-								<th>Phone</th>
-								<th>Email</th>
-								<th>Gender</th>
+								<th>Depart</th>
+								<th>Arrive</th>
+								<th>Rute From</th>
+								<th>Rute To</th>
+								<th>Price</th>
+								<th>Class</th>
+								<th>Transportation</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach ($customer as $value) : ?>
+							<?php foreach ($rute as $value) : ?>
 							<tr>
-								<td>
-									<?php echo $value['name'] ?>
-								</td>
-								<td>
-									<?php echo $value['address'] ?>
-								</td>
-								<td>
-									<?php echo $value['phone'] ?>
-								</td>
-								<td>
-									<?php echo $value['email'] ?>
-								</td>
-								<td>
-									<?php echo $value['gender'] ?>
-								</td>
+								<td><?php echo $value['depart'] ?></td>
+								<td><?php echo $value['arrive'] ?></td>
+								<td><?php echo $value['rute_from'] ?></td>
+								<td><?php echo $value['rute_to'] ?></td>
+								<td><?php echo $value['price'] ?></td>
+								<td><?php echo $value['class'] ?></td>
+								<td><?php echo $value['code'] ?></td>
+								
 								<td>
 									<button type="button" onclick="viewedit(<?php echo $value['id'] ?>)" class="btn btn-success" data-toggle="modal" data-target="#modal-viewedit">View/Edit</button>
-									<a onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger" href="<?php echo base_url() ?>admin/customer/delete/<?php echo $value['id']?>">Delete</a>
+									<a onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger" href="<?php echo base_url() ?>admin/rute/delete/<?php echo $value['id']?>">Delete</a>
 								</td>
 							</tr>
 							<?php endforeach; ?>
@@ -100,30 +95,42 @@
 								<div class="modal-body">
 
 									<!-- ################# -->
-									<form role="form" action="<?php echo base_url() ?>admin/customer/add" method="POST">
+									<form role="form" action="<?php echo base_url() ?>admin/rute/add" method="POST">
 										<!-- <input type="hidden" name="id" value="<?php echo $reservation['id'] ?>"> -->
 										<div class="box-body">
                                             <div class="form-group">
-												<label for="exampleInputEmail1">Name</label>
-												<input name="name" value="" class="form-control" id="exampleInputEmail1" placeholder="Name">
+												<label for="exampleInputEmail1">Depart</label>
+												<input name="depart" value="" class="form-control" id="exampleInputEmail1" placeholder="Name">
                                             </div>
 											<div class="form-group">
-												<label for="exampleInputEmail1">Address</label>
-												<input name="address" value="" class="form-control" id="exampleInputEmail1" placeholder="Address">
+												<label for="exampleInputEmail1">Arrive</label>
+												<input name="arrive" value="" class="form-control" id="exampleInputEmail1" placeholder="Arrive">
                                             </div>
                                             <div class="form-group">
-												<label for="exampleInputEmail1">Phone</label>
-												<input name="phone" value="" class="form-control" id="exampleInputEmail1" placeholder="Phone">
+												<label for="exampleInputEmail1">Rute From</label>
+												<input name="rutefrom" value="" class="form-control" id="exampleInputEmail1" placeholder="Rute From">
                                             </div>
                                             <div class="form-group">
-												<label for="exampleInputEmail1">Email</label>
-												<input name="email" value="" class="form-control" id="exampleInputEmail1" placeholder="Email">
+												<label for="exampleInputEmail1">Rute To</label>
+												<input name="email" value="" class="form-control" id="exampleInputEmail1" placeholder="Rute To">
+											</div>
+											<div class="form-group">
+												<label for="exampleInputEmail1">Price</label>
+												<input name="email" value="" class="form-control" id="exampleInputEmail1" placeholder="Price">
                                             </div>
                                             <div class="form-group">
-												<label for="exampleInputEmail1">Gender</label>
+												<label for="exampleInputEmail1">Class</label>
 												<select name="gender" class="form-control" name="" id="">
-                                                    <option value="l">Male</option>
-                                                    <option value="p">Female</option>
+                                                    <option value="First">First Class</option>
+                                                    <option value="Economy">Economy Class</option>
+                                                </select>
+											</div>
+											<div class="form-group">
+												<label for="exampleInputEmail1">Transportation</label>
+												<select name="gender" class="form-control" name="" id="">
+													<?php foreach ( $transportation as $value ): ?>
+														<option value="<?php echo $value['id'] ?>"><?php echo $value['code'] ?></option>
+													<?php endforeach; ?>
                                                 </select>
 											</div>
 
@@ -131,7 +138,7 @@
 										<!-- /.box-body -->
 
 										<div class="box-footer">
-											<button type="submit" class="btn btn-primary">Add User</button>
+											<button type="submit" class="btn btn-primary">Add Rute</button>
 										</div>
 									</form>
 									<!-- ################# -->
