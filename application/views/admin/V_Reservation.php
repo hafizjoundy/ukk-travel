@@ -33,7 +33,7 @@
 							<?php foreach ($reservation as $value) : ?>
 							<tr>
 								<td><?php echo $value['reservation_code'] ?></td>
-								<td>2018-02-25 12:27:06</td>
+								<td><?php echo $value['reservation_date'] ?></td>
 								<td class="reservation-action"><?php echo $value['username'] ?></td>
 								<td class="reservation-action"><?php echo $value['rute_from'] ?> - <?php echo $value['rute_to'] ?></td>
 								<td>

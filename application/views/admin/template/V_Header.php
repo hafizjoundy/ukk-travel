@@ -261,22 +261,27 @@ desired effect
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Main</li>
-        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
+        <li class=""><a href="#"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
         <li class="header">Admin</li>
+        <li class=""><a href="<?php echo base_url() ?>admin/reservation"><i class="fa fa-link"></i> <span>Reservation</span></a></li>        
+        <li class=""><a href="<?php echo base_url() ?>admin/customer"><i class="fa fa-link"></i> <span>Customer</span></a></li>        
+        <li class=""><a href="<?php echo base_url() ?>admin/rute"><i class="fa fa-link"></i> <span>Rute</span></a></li>        
+        <li class=""><a href="<?php echo base_url() ?>admin/transportation"><i class="fa fa-link"></i> <span>Transportation</span></a></li>       
+        <li class=""><a href="<?php echo base_url() ?>admin/user"><i class="fa fa-link"></i> <span>User</span></a></li>       
         <!-- Optionally, you can add icons to the links -->
         <!-- <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li> -->
         <!-- <li><a href="#"><i class="fa fa-link"></i> <span>Reservation</span></a></li> -->
-        
+<!--         
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Reservation</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
-          </a>
-          <ul class="treeview-menu">
+          </a> -->
+          <!-- <ul class="treeview-menu">
             <li><a href="#">Add Reservation</a></li>
             <li><a href="#">View Reservation</a></li>
-          </ul>
+          </ul> -->
         </li>
 
       </ul>
