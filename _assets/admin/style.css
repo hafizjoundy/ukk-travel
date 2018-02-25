@@ -1,0 +1,20 @@
+/* .edit-delete{
+    display: inline-block;
+} */
+.reservation-action{
+    font-weight: 600;
+    color: #4fc1e9;
+    cursor: pointer;
+}
+.skin-blue .main-header .navbar{
+    background-color:#4fc1e9;
+}
+.skin-blue .main-header .logo{
+    background-color:#46a5c7;
+}
+.proof-of-payment-img{
+    display: block;
+    width: 55%;
+    margin: auto;
+    height: auto;
+}

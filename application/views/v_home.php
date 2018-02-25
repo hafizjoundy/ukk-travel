@@ -86,6 +86,7 @@
 							<h3>Everything will be 'SANS'</h3>
 							<span class="price">Start from 99.999 IDR</span>
 							<!-- <p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p> -->
+							<input type="datetime-local">
 						</div>
 					</div>
 				</div>
