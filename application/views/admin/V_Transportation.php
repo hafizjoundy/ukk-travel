@@ -1,7 +1,7 @@
 <section class="content-header">
 	<h1>Transportation</h1>
 	<br>
-	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-add">Add User +</button>
+	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-add">Add Transportation +</button>
 	<ol class="breadcrumb">
 		<li>
 			<a href="http://[::1]/lte/admin/dashboard">

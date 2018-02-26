@@ -1,11 +1,11 @@
 <section class="content-header">
 	<h1>User</h1>
 	<br>
-	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-add">Add User +</button>
+	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-add">Add Customer +</button>
 	<ol class="breadcrumb">
 		<li>
 			<a href="http://[::1]/lte/admin/dashboard">
-				<i class="fa fa-dashboard"></i> Reservation</a>
+				<i class="fa fa-dashboard"></i> Customer</a>
 		</li>
 		<li class="active">View</li>
 	</ol>

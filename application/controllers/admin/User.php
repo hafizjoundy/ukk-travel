@@ -13,9 +13,10 @@ class user extends CI_Controller {
 	{	
 		$user = $this->M_User_Admin->get_user();
 		$data['user'] = $user;
+		$data['nav'] = 'user';
 		// var_dump($data);
 		// die;
-        $this->load->view('admin/template/V_Header');
+        $this->load->view('admin/template/V_Header',$data);
 		$this->load->view('admin/V_user',$data);
 		
 		$script = '<script>

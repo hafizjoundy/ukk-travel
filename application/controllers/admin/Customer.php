@@ -13,9 +13,10 @@ class Customer extends CI_Controller {
 	{	
 		$customer = $this->M_Customer_Admin->get_customer();
 		$data['customer'] = $customer;
+		$data['nav'] = 'customer';
 		// var_dump($data);
 		// die;
-        $this->load->view('admin/template/V_Header');
+        $this->load->view('admin/template/V_Header',$data);
 		$this->load->view('admin/V_Customer',$data);
 		
 		$script = '<script>

@@ -103,6 +103,12 @@
 <!-- DataTables -->
 <script src="<?php echo base_url() ?>_assets/admin/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url() ?>_assets/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="<?php echo base_url() ?>_assets/admin/jquery-ui.min.js"></script>
+<!-- <script src="<?php echo base_url() ?>_assets/admin/jquery.timepicker.min.js"></script> -->
+<!-- <script src="<?php echo base_url() ?>_assets/admin/jquery-datetimepicker.js"></script> -->
+<!-- <script src="<?php echo base_url() ?>_assets/admin/jquery-ui-timepicker-addon.js"></script> -->
+<script type="text/javascript" src="<?php echo base_url() ?>_assets/admin/bower_datetime/moment/min/moment.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>_assets/admin/bower_datetime/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 <script>
   $(function () {
     $('#example1').DataTable()

@@ -15,9 +15,10 @@ class rute extends CI_Controller {
 		$transportation = $this->M_Rute_Admin->get_transportation();
 		$data['rute'] = $rute;
 		$data['transportation'] = $transportation;
+		$data['nav'] = 'rute';
 		// var_dump($data);
 		// die;
-        $this->load->view('admin/template/V_Header');
+        $this->load->view('admin/template/V_Header',$data);
 		$this->load->view('admin/V_rute',$data);
 		
 		$script = '<script>
@@ -26,25 +27,37 @@ class rute extends CI_Controller {
 					$("#viewedit").html(result);
 		  }});
 		}
+		</script>
+		<script>
+		$( function() {
+			$(".datepicker").datetimepicker({format : "YYYY-MM-DD HH:mm:ss"});
+		  } );
 		</script>';
 		$data['script'] = $script;
 		$this->load->view('admin/template/V_Footer',$data);
     }
     
     public function add(){
-        $name = $this->input->post('name');
-        $address = $this->input->post('address');
-        $phone = $this->input->post('phone');
-        $email = $this->input->post('email');
-        $gender = $this->input->post('gender');
+        $depart = $this->input->post('depart');
+        $arrive = $this->input->post('arrive');
+        $rutefrom = $this->input->post('rutefrom');
+        $ruteto = $this->input->post('ruteto');
+        $price = $this->input->post('price');
+        $class = $this->input->post('class');
+        $transportation = $this->input->post('transportation');
 
         $data = [
-            'name' => $name,
-            'address' => $address,
-            'phone' => $phone,
-            'email' => $email,
-            'gender' => $gender  
-        ];
+            'depart' => $depart,
+            'arrive' => $arrive,
+            'rute_from' => $rutefrom,
+            'rute_to' => $ruteto,
+            'price' => $price,
+            'class' => $class,
+            'transportation_id' => $transportation,
+		];
+		
+		// var_dump($data);
+		// die;
         
         $this->M_Rute_Admin->add($data);
 
@@ -56,27 +69,33 @@ class rute extends CI_Controller {
 			redirect(base_url().'admin/rute');
 		}
 
+		$transportation = $this->M_Rute_Admin->get_transportation();
+		$data['transportation'] = $transportation;
 		$data['rute'] = $this->M_Rute_Admin->get_rute_id($id);
 
-		$this->load->view('admin/V_rute_Viewedit',$data);
+		$this->load->view('admin/V_Rute_Viewedit',$data);
 		
 	}
 
 	public function update(){
 		$id = $this->input->post('id');
-		$name = $this->input->post('name');
-        $address = $this->input->post('address');
-        $phone = $this->input->post('phone');
-        $email = $this->input->post('email');
-        $gender = $this->input->post('gender');
+		$depart = $this->input->post('depart');
+        $arrive = $this->input->post('arrive');
+        $rutefrom = $this->input->post('rutefrom');
+        $ruteto = $this->input->post('ruteto');
+        $price = $this->input->post('price');
+        $class = $this->input->post('class');
+        $transportation = $this->input->post('transportation');
 
         $data = [
-            'name' => $name,
-            'address' => $address,
-            'phone' => $phone,
-            'email' => $email,
-            'gender' => $gender  
-        ];
+            'depart' => $depart,
+            'arrive' => $arrive,
+            'rute_from' => $rutefrom,
+            'rute_to' => $ruteto,
+            'price' => $price,
+            'class' => $class,
+            'transportation_id' => $transportation,
+		];
 
 		$this->M_Rute_Admin->update($data,$id);
 		redirect(base_url().'admin/rute');

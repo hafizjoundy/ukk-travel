@@ -13,9 +13,10 @@ class transportation extends CI_Controller {
 	{	
 		$transportation = $this->M_Transportation_Admin->get_transportation();
 		$data['transportation'] = $transportation;
+		$data['nav'] = 'transportation';
 		// var_dump($data);
 		// die;
-        $this->load->view('admin/template/V_Header');
+        $this->load->view('admin/template/V_Header',$data);
 		$this->load->view('admin/V_transportation',$data);
 		
 		$script = '<script>

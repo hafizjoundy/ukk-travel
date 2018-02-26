@@ -8,8 +8,11 @@ Class M_Rute_Admin extends CI_Model{
         return $this->db->get()->result_array();
     }
     public function get_rute_id($id){
-        $this->db->where(['id' => $id]);
-        return $this->db->get('rute')->row_array();
+        $this->db->select('rute.id,rute.depart,rute.arrive,rute.rute_from,rute.rute_to,rute.price,rute.class,transportation.code');
+        $this->db->from('rute');
+        $this->db->join('transportation','rute.transportation_id=transportation.id');
+        $this->db->where(['rute.id' => $id]);
+        return $this->db->get()->row_array();
     }
 
     public function add($data){

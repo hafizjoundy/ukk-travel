@@ -13,9 +13,10 @@ class Reservation extends CI_Controller {
 	{	
 		$reservation = $this->M_Reservation_Admin->get_reservation();
 		$data['reservation'] = $reservation;
+		$data['nav'] = 'reservation';
 		// var_dump($data);
 		// die;
-        $this->load->view('admin/template/V_Header');
+        $this->load->view('admin/template/V_Header',$data);
 		$this->load->view('admin/V_Reservation',$data);
 		
 		$script = '<script>

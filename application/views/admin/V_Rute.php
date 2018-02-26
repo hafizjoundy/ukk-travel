@@ -90,7 +90,7 @@
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
-									<h4 class="modal-title">Add User</h4>
+									<h4 class="modal-title">Add Rute</h4>
 								</div>
 								<div class="modal-body">
 
@@ -100,11 +100,11 @@
 										<div class="box-body">
                                             <div class="form-group">
 												<label for="exampleInputEmail1">Depart</label>
-												<input name="depart" value="" class="form-control" id="exampleInputEmail1" placeholder="Name">
+												<input name="depart" value="" class="form-control datepicker" id="exampleInputEmail1" placeholder="Name">
                                             </div>
 											<div class="form-group">
 												<label for="exampleInputEmail1">Arrive</label>
-												<input name="arrive" value="" class="form-control" id="exampleInputEmail1" placeholder="Arrive">
+												<input name="arrive" value="" class="form-control datepicker" id="exampleInputEmail1" placeholder="Arrive">
                                             </div>
                                             <div class="form-group">
 												<label for="exampleInputEmail1">Rute From</label>
@@ -112,22 +112,22 @@
                                             </div>
                                             <div class="form-group">
 												<label for="exampleInputEmail1">Rute To</label>
-												<input name="email" value="" class="form-control" id="exampleInputEmail1" placeholder="Rute To">
+												<input name="ruteto" value="" class="form-control" id="exampleInputEmail1" placeholder="Rute To">
 											</div>
 											<div class="form-group">
 												<label for="exampleInputEmail1">Price</label>
-												<input name="email" value="" class="form-control" id="exampleInputEmail1" placeholder="Price">
+												<input name="price" value="" class="form-control" id="exampleInputEmail1" placeholder="Price">
                                             </div>
                                             <div class="form-group">
 												<label for="exampleInputEmail1">Class</label>
-												<select name="gender" class="form-control" name="" id="">
+												<select name="class" class="form-control" name="" id="">
                                                     <option value="First">First Class</option>
                                                     <option value="Economy">Economy Class</option>
                                                 </select>
 											</div>
 											<div class="form-group">
 												<label for="exampleInputEmail1">Transportation</label>
-												<select name="gender" class="form-control" name="" id="">
+												<select name="transportation" class="form-control" name="" id="">
 													<?php foreach ( $transportation as $value ): ?>
 														<option value="<?php echo $value['id'] ?>"><?php echo $value['code'] ?></option>
 													<?php endforeach; ?>

@@ -8,7 +8,7 @@
 		<div class="form-group">
 			<label for="exampleInputEmail1">New Password</label>
 			<small>*cannot edit previous password</small>
-			<input name="password" value="<?php echo $user['password'] ?>" class="form-control" id="exampleInputEmail1" placeholder="Password">
+			<input name="password" value="" class="form-control" id="exampleInputEmail1" placeholder="Password">
 		</div>
 		<div class="form-group">
 			<label for="exampleInputEmail1">Level</label>
