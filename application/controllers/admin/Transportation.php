@@ -11,6 +11,10 @@ class transportation extends CI_Controller {
 
 	public function index()
 	{	
+
+		if($this->session->userdata('user_admin') == false){
+            redirect(base_url() . 'admin/account/signin');                            
+		}
 		$transportation = $this->M_Transportation_Admin->get_transportation();
 		$data['transportation'] = $transportation;
 		$data['nav'] = 'transportation';
@@ -31,6 +35,10 @@ class transportation extends CI_Controller {
     }
     
     public function add(){
+
+		if($this->session->userdata('user_admin') == false){
+            redirect(base_url() . 'admin/account/signin');                            
+		}
         $code = $this->input->post('code');
         $description = $this->input->post('description');
         $totalseat = $this->input->post('totalseat');
@@ -47,6 +55,10 @@ class transportation extends CI_Controller {
     }
 
 	public function viewedit($id = null){
+
+		if($this->session->userdata('user_admin') == false){
+            redirect(base_url() . 'admin/account/signin');                            
+		}
 		if($id == null){
 			redirect(base_url().'admin/transportation');
 		}
@@ -58,6 +70,10 @@ class transportation extends CI_Controller {
 	}
 
 	public function update(){
+
+		if($this->session->userdata('user_admin') == false){
+            redirect(base_url() . 'admin/account/signin');                            
+		}
 		$id = $this->input->post('id');
 		$code = $this->input->post('code');
         $description = $this->input->post('description');
@@ -74,6 +90,10 @@ class transportation extends CI_Controller {
 	}
 
 	public function delete($id = null){
+
+		if($this->session->userdata('user_admin') == false){
+            redirect(base_url() . 'admin/account/signin');                            
+		}
 		if($id == null){
 			redirect(base_url().'admin/transportation');
 		}

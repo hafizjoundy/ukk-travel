@@ -16,6 +16,10 @@ class Account extends CI_Controller
 
     public function signin()
     {
+        if($this->session->userdata('user_admin')){
+            redirect(base_url() . 'admin');                            
+        }
+
         $this->load->view('admin/v_signin');
     }
 
@@ -28,9 +32,9 @@ class Account extends CI_Controller
 
         $user_data = $this->M_Account_Admin->get_password_users($username);
 
-        // if (count($user_data) == 0) {
-        //     redirect(base_url() . 'account/signin?alert=failed');
-        // }
+        if (count($user_data) == 0) {
+            redirect(base_url() . 'admin/account/signin?alert=failed');
+        }
 
         $password_get = $user_data[0]["password"];
         $user_id = $user_data[0]["id"];
@@ -47,49 +51,49 @@ class Account extends CI_Controller
                 redirect(base_url() . 'admin');                
             } 
             else {
-                // redirect(base_url() . 'admin/account/signin?alert=failed');
+                redirect(base_url() . 'admin/account/signin?alert=failed');
             }
 
         } 
         else {
             // echo 'salah';
             // die;
-            // redirect(base_url() . 'admin/account/signin?alert=failed');
+            redirect(base_url() . 'admin/account/signin?alert=failed');
         }
         // var_dump($password_get);
     }
 
-    public function signup()
-    {
-        $this->load->view('template/V_Header');
-        $this->load->view('v_signup');
-        $this->load->view('template/V_Footer');
-    }
+    // public function signup()
+    // {
+    //     $this->load->view('template/V_Header');
+    //     $this->load->view('v_signup');
+    //     $this->load->view('template/V_Footer');
+    // }
 
-    public function signup_process()
-    {
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
+    // public function signup_process()
+    // {
+    //     $username = $this->input->post('username');
+    //     $password = $this->input->post('password');
 
-        $password = password_hash($password, PASSWORD_DEFAULT);
+    //     $password = password_hash($password, PASSWORD_DEFAULT);
 
-        $data = [
-            "username" => $username,
-            "password" => $password,
-            "level" => 1
-        ];
+    //     $data = [
+    //         "username" => $username,
+    //         "password" => $password,
+    //         "level" => 1
+    //     ];
 
-        if ($this->M_Account_Admin->signup_insert($data) == true) {
-            redirect(base_url() . 'account/signin?alert=success');
-        } else {
-            redirect(base_url() . 'account/signup?alert=failed');
-        }
-    }
+    //     if ($this->M_Account_Admin->signup_insert($data) == true) {
+    //         redirect(base_url() . 'account/signin?alert=success');
+    //     } else {
+    //         redirect(base_url() . 'account/signup?alert=failed');
+    //     }
+    // }
 
     public function logout()
     {
-        $this->session->unset_userdata('user');
-        redirect(base_url());
+        $this->session->unset_userdata('user_admin');
+        redirect(base_url().'admin/account/signin');
     }
 
 }

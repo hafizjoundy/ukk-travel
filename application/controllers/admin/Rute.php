@@ -11,6 +11,10 @@ class rute extends CI_Controller {
 
 	public function index()
 	{	
+		if($this->session->userdata('user_admin') == false){
+            redirect(base_url() . 'admin/account/signin');                            
+		}
+
 		$rute = $this->M_Rute_Admin->get_rute();
 		$transportation = $this->M_Rute_Admin->get_transportation();
 		$data['rute'] = $rute;
@@ -38,6 +42,10 @@ class rute extends CI_Controller {
     }
     
     public function add(){
+
+		if($this->session->userdata('user_admin') == false){
+            redirect(base_url() . 'admin/account/signin');                            
+		}
         $depart = $this->input->post('depart');
         $arrive = $this->input->post('arrive');
         $rutefrom = $this->input->post('rutefrom');
@@ -65,6 +73,10 @@ class rute extends CI_Controller {
     }
 
 	public function viewedit($id = null){
+
+		if($this->session->userdata('user_admin') == false){
+            redirect(base_url() . 'admin/account/signin');                            
+		}
 		if($id == null){
 			redirect(base_url().'admin/rute');
 		}
@@ -78,6 +90,10 @@ class rute extends CI_Controller {
 	}
 
 	public function update(){
+
+		if($this->session->userdata('user_admin') == false){
+            redirect(base_url() . 'admin/account/signin');                            
+		}
 		$id = $this->input->post('id');
 		$depart = $this->input->post('depart');
         $arrive = $this->input->post('arrive');
@@ -102,6 +118,10 @@ class rute extends CI_Controller {
 	}
 
 	public function delete($id = null){
+
+		if($this->session->userdata('user_admin') == false){
+            redirect(base_url() . 'admin/account/signin');                            
+		}
 		if($id == null){
 			redirect(base_url().'admin/rute');
 		}

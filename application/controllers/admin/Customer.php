@@ -11,6 +11,10 @@ class Customer extends CI_Controller {
 
 	public function index()
 	{	
+		if($this->session->userdata('user_admin') == false){
+            redirect(base_url() . 'admin/account/signin');                            
+		}
+		
 		$customer = $this->M_Customer_Admin->get_customer();
 		$data['customer'] = $customer;
 		$data['nav'] = 'customer';
@@ -31,6 +35,11 @@ class Customer extends CI_Controller {
     }
     
     public function add(){
+
+		if($this->session->userdata('user_admin') == false){
+            redirect(base_url() . 'admin/account/signin');                            
+		}
+
         $name = $this->input->post('name');
         $address = $this->input->post('address');
         $phone = $this->input->post('phone');
@@ -51,6 +60,10 @@ class Customer extends CI_Controller {
     }
 
 	public function viewedit($id = null){
+		if($this->session->userdata('user_admin') == false){
+            redirect(base_url() . 'admin/account/signin');                            
+		}
+
 		if($id == null){
 			redirect(base_url().'admin/customer');
 		}
@@ -62,6 +75,10 @@ class Customer extends CI_Controller {
 	}
 
 	public function update(){
+		if($this->session->userdata('user_admin') == false){
+            redirect(base_url() . 'admin/account/signin');                            
+		}
+
 		$id = $this->input->post('id');
 		$name = $this->input->post('name');
         $address = $this->input->post('address');
@@ -82,6 +99,10 @@ class Customer extends CI_Controller {
 	}
 
 	public function delete($id = null){
+		if($this->session->userdata('user_admin') == false){
+            redirect(base_url() . 'admin/account/signin');                            
+		}
+
 		if($id == null){
 			redirect(base_url().'admin/customer');
 		}

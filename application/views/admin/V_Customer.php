@@ -1,5 +1,5 @@
 <section class="content-header">
-	<h1>User</h1>
+	<h1>Customer</h1>
 	<br>
 	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-add">Add Customer +</button>
 	<ol class="breadcrumb">
@@ -117,7 +117,7 @@
                                             </div>
                                             <div class="form-group">
 												<label for="exampleInputEmail1">Email</label>
-												<input name="email" value="" class="form-control" id="exampleInputEmail1" placeholder="Email">
+												f<input name="email" value="" class="form-control" id="exampleInputEmail1" placeholder="Email">
                                             </div>
                                             <div class="form-group">
 												<label for="exampleInputEmail1">Gender</label>

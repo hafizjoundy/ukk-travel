@@ -9,7 +9,7 @@
 	</ol>
 </section>
 
-<section class="content">
+<section class="content"> 
 	<div class="row">
 		<div class="col-xs-12">
 			<!-- /.box -->
@@ -20,6 +20,7 @@
 					<table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
+								<th>No</th>
 								<th>Reservation Code</th>
 								<th>Reservation Date</th>
 								<th>Users</th>
@@ -30,8 +31,10 @@
 							</tr>
 						</thead>
 						<tbody>
+							<?php $i = 1 ?>
 							<?php foreach ($reservation as $value) : ?>
 							<tr>
+								<td><?php echo $i ?></td>
 								<td><?php echo $value['reservation_code'] ?></td>
 								<td><?php echo $value['reservation_date'] ?></td>
 								<td class="reservation-action"><?php echo $value['username'] ?></td>
@@ -61,6 +64,7 @@
 									<a onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger" href="<?php echo base_url() ?>admin/reservation/delete/<?php echo $value['id']?>">Delete</a>
 								</td>
 							</tr>
+							<?php $i++ ?>
 							<?php endforeach; ?>
 						</tbody>
 						<!-- <tfoot>

@@ -64,7 +64,7 @@ desired effect
 		<header class="main-header">
 
 			<!-- Logo -->
-			<a href="index2.html" class="logo">
+			<a href="<?php echo base_url() ?>admin" class="logo">
 				<!-- mini logo for sidebar mini 50x50 pixels -->
 				<span class="logo-mini">
 					<b>A</b>LT</span>
@@ -94,7 +94,7 @@ desired effect
 								<!-- The user image in the navbar-->
 								<img src="<?php echo base_url() ?>_assets/admin/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
 								<!-- hidden-xs hides the username on small devices so only the image appears. -->
-								<span class="hidden-xs">Alexander Pierce</span>
+								<span class="hidden-xs"><?php echo $this->session->userdata('user_admin')["username"] ?></span>
 							</a>
 							<ul class="dropdown-menu">
 								<!-- The user image in the menu -->
@@ -102,7 +102,7 @@ desired effect
 									<img src="<?php echo base_url() ?>_assets/admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
 									<p>
-										Alexander Pierce - Web Developer
+                  <?php echo $this->session->userdata('user_admin')["username"] ?>
 										<!-- <small>Member since Nov. 2012</small> -->
 									</p>
 								</li>
@@ -127,7 +127,7 @@ desired effect
 										<!-- <a href="#" class="btn btn-default btn-flat">Profile</a> -->
 									</div>
 									<div class="pull-right">
-										<a href="#" class="btn btn-default btn-flat">Sign out</a>
+										<a href="<?php echo base_url() ?>admin/account/logout" class="btn btn-default btn-flat">Sign out</a>
 									</div>
 								</li>
 							</ul>
@@ -149,7 +149,7 @@ desired effect
 						<img src="<?php echo base_url() ?>_assets/admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 					</div>
 					<div class="pull-left info">
-						<p>Alexander Pierce</p>
+						<p><?php echo $this->session->userdata('user_admin')["username"] ?></p>
 						<!-- Status -->
 						<a href="#">
 							<i class="fa fa-circle text-success"></i> Online</a>
@@ -160,7 +160,7 @@ desired effect
 				<ul class="sidebar-menu" data-widget="tree">
 					<li class="header">Main</li>
 					<li class="<?php echo ($nav == 'dashboard' ? 'active' : '') ?>">
-						<a href="#">
+						<a href="<?php echo base_url() ?>admin/dashboard">
 							<i class="fa fa-dashboard"></i>
 							<span>Dashboard</span>
 						</a>

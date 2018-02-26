@@ -10,7 +10,11 @@ class Reservation extends CI_Controller {
 	}
 
 	public function index()
-	{	
+	{		
+		if($this->session->userdata('user_admin') == false){
+            redirect(base_url() . 'admin/account/signin');                            
+		}
+
 		$reservation = $this->M_Reservation_Admin->get_reservation();
 		$data['reservation'] = $reservation;
 		$data['nav'] = 'reservation';
@@ -31,6 +35,10 @@ class Reservation extends CI_Controller {
 	}
 
 	public function viewedit($id = null){
+		if($this->session->userdata('user_admin') == false){
+            redirect(base_url() . 'admin/account/signin');                            
+		}
+
 		if($id == null){
 			redirect(base_url().'admin/reservation');
 		}
@@ -42,6 +50,10 @@ class Reservation extends CI_Controller {
 	}
 
 	public function update(){
+		if($this->session->userdata('user_admin') == false){
+            redirect(base_url() . 'admin/account/signin');                            
+		}
+
 		$id = $this->input->post('id');
 		$status = $this->input->post('status');
 		$this->M_Reservation_Admin->update($status,$id);
@@ -49,6 +61,10 @@ class Reservation extends CI_Controller {
 	}
 
 	public function delete($id = null){
+		if($this->session->userdata('user_admin') == false){
+            redirect(base_url() . 'admin/account/signin');                            
+		}
+
 		if($id == null){
 			redirect(base_url().'admin/reservation');
 		}
